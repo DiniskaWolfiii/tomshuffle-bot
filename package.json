@@ -1,0 +1,22 @@
+{
+  "name": "tomshuffle-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiniskaWolfiii/tomshuffle-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiniskaWolfiii/tomshuffle-bot/issues"
+  },
+  "homepage": "https://github.com/DiniskaWolfiii/tomshuffle-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
