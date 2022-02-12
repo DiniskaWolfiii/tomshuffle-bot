@@ -15,6 +15,6 @@ module.exports = {
 		if (interaction.user.id !== ownerId) return await interaction.reply({content: 'Du bist nicht Wolfiii!', ephemeral: true});
         await interaction.reply({content: 'Be right back... :zzz:', ephemeral: true})
         interaction.client.destroy();
-        shelljs.exec('pm2 restart krasser-bot')
+        shelljs.exec('pm2 restart tomshuffle-bot')
 	},
 };
