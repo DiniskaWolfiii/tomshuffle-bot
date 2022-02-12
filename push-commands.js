@@ -18,10 +18,10 @@ const rest = new REST({ version: '9' }).setToken(token); // !!! TOKEN ÄNDERN BE
 	try {
 		await rest.put(
 			// Public
-			Routes.applicationCommands(clientId),
+			// Routes.applicationCommands(clientId),
 
 			// Test
-			// Routes.applicationGuildCommands(clientId, deployId),
+			 Routes.applicationGuildCommands(clientId, deployId),
 			{ body: commands },
 		);
 
