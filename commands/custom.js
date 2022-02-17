@@ -23,7 +23,7 @@ module.exports = {
         try {
             guild.members.fetch().then(members => {
                 members.forEach(member => {
-                    member.roles.add('943969798231056414', 'Auto Role')
+                    member.roles.add('943973469312413808', 'Auto Role')
                 })
             })
             interaction.editReply('Done!');    
