@@ -11,26 +11,26 @@ module.exports = {
      */
     async execute(interaction) {
 
-        /* Get GuildIcon
+        // Get GuildIcon
+        /*
         const guild = interaction.guild;
         await interaction.reply({content:guild.iconURL()});
         */
-        /* Give All Members Role
+        //Give All Members Role
         const guild = interaction.guild;
         await interaction.reply({content: 'Working...', ephemeral: true})
 
         try {
             guild.members.fetch().then(members => {
                 members.forEach(member => {
-                    member.roles.add('941857831043358741', 'Auto Role')
-                    member.roles.add('941858319969189968', 'Auto Role')
+                    member.roles.add('943969798231056414', 'Auto Role')
                 })
             })
             interaction.editReply('Done!');    
         } catch (error) {
             interaction.editReply('ERROR!')
         }
-        */
+        
         
     },
 };
