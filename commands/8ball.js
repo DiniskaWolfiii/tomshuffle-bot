@@ -46,18 +46,23 @@ module.exports = {
             'Bitte. Geh sterben.',
             'Och nee, die haben jetzt nicht noch Trump mit reingezogen... oder??',
             'BITTTCCHH, natürlich ist die Antwort nein',
-            'Frag doch einfach deine Mülltonne. Die weiß dein Müll kompensiert',
+            'Frag doch einfach deine Mülltonne. Die weiß wie man dein Müll kompensiert',
             'Hier. Hast. Du. Scheiße. :poop:',
             ':poop:',
             'Ich liebe dich auch... nicht.',
-            'Nachdem du gestern mit meiner Freunding fremdgegangen bist, ist meine Antwort das hier: :knife:',
-            'Du wurdest GEBÄÄÄÄÄHHTT!!! :baaahhh:',
+            'Nachdem du gestern mit meiner Freundin fremdgegangen bist, ist meine Antwort das hier: :knife:',
             'Was? Ich verstehe kein Idiotisch',
             'Du wirst niemals Glücklich werden nach dieser Frage...',
             'Hat deine Mutter dich als Kind auf dem Kopf fallen lassen?',
             'War deine Schaukel als Kind gegen die Wand gerichtet?',
             'Ich sehe deine Zukunft... Und sehe Schwarz',
-            'Well, duh'
+            'Well, duh',
+            'Wie oft hat deine Mutter dich als Kind runterfallen lassen? Frage aus interesse...',
+            'Zu einer Wahrscheinlichkeit von 99,999%',
+            'Die Antwort liegt in deinem Magen... Vergammelt, zerkaut und ohne Sinn.',
+            'Ich wusste nicht dass ich als KUGEL solche Aggressionen verspüren kann...',
+            'Bitte... Hör einfach auf...',
+            'Darf ich dir Geld geben und du hörst auf mich jemals wieder anzusprechen?'
         ]
         let randomNumber = Math.floor(Math.random()*antworten.length);
         
