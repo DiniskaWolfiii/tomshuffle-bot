@@ -3,27 +3,158 @@ const wait = require('util').promisify(setTimeout);
 
 module.exports = {
 
-	data: new SlashCommandBuilder()
-		.setName('8ball')
-		.setDescription('Frage den heiligen 8ball und erhalte heilige Antworten!')
-        .addStringOption(option => 
+    data: new SlashCommandBuilder()
+        .setName('8ball')
+        .setDescription('Frage den heiligen 8ball und erhalte heilige Antworten!')
+        .addStringOption(option =>
             option.setName('frage')
-            .setDescription('Deine Frage die du dem 8ball stellen willst')
-            .setRequired(true)),
-		
-/**
- * @param {import('discord.js').Interaction} interaction
- */
-	async execute(interaction) {
+                .setDescription('Deine Frage die du dem 8ball stellen willst')
+                .setRequired(true)),
+
+    /**
+     * @param {import('discord.js').Interaction} interaction
+     */
+    async execute(interaction) {
         const Discord = require('discord.js');
         const frage = interaction.options.getString('frage');
-		let antworten = [
+        let antworten = [
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
+            'Ja',
             'Ja',
             'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Nein',
+            'Vielleicht',
+            'Vielleicht',
+            'Vielleicht',
+            'Vielleicht',
+            'Vielleicht',
+            'Vielleicht',
+            'Vielleicht',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Könnte man durchaus in Betrach ziehen',
+            'Durchaus möglich...',
+            'Durchaus möglich...',
+            'Durchaus möglich...',
+            'Durchaus möglich...',
+            'Durchaus möglich...',
+            'Durchaus möglich...',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Meine Quellen sagen Nein, sie sagen aber auch Trump ein guter Präsident ist',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Definitiv.',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Konzentriere dich und frage nochmal',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'Ohne einen Zweifel.',
+            'OH GOTT NEIN',
+            'OH GOTT NEIN',
+            'OH GOTT NEIN',
+            'OH GOTT NEIN',
+            'OH GOTT NEIN',
+            'OH GOTT NEIN',
+            'Oh god please have mercy with me',
+            'Oh god please have mercy with me',
+            'Oh god please have mercy with me',
+            'Oh god please have mercy with me',
+            'Oh god please have mercy with me',
+            'Oh god please have mercy with me',
+            'Das sag ich dir lieber nicht...',
+            'Das sag ich dir lieber nicht...',
+            'Das sag ich dir lieber nicht...',
+            'Das sag ich dir lieber nicht...',
+            'Das sag ich dir lieber nicht...',
+            'Das sag ich dir lieber nicht...',
+            'Das unterliegt einer Schweigepflicht',
+            'Das unterliegt einer Schweigepflicht',
+            'Das unterliegt einer Schweigepflicht',
+            'Das unterliegt einer Schweigepflicht',
+            'Das unterliegt einer Schweigepflicht',
+            'Das unterliegt einer Schweigepflicht',
+            'Als Strafe für diese Frage musst du alle 900 Krogs sammeln und darfst dann erst wieder atmen',
             'Versuchs morgen wieder',
             'Möglicherweise',
             'Ja, aber mache es hardcore betrunken :beers:',
-            'Meine Quellen sagen Nein, sie sagen aber auch das Hillary gewinnen würde',
             'Tu was Jesus gemacht hat, sterb mit einem Alter von 33',
             'Zweifelhaft',
             'Auf jeden Fall',
@@ -46,14 +177,25 @@ module.exports = {
             'Bitte. Geh sterben.',
             'Och nee, die haben jetzt nicht noch Trump mit reingezogen... oder??',
             'BITTTCCHH, natürlich ist die Antwort nein',
+            'Bitte verlasse diesen Server.',
             'Frag doch einfach deine Mülltonne. Die weiß wie man dein Müll kompensiert',
             'Hier. Hast. Du. Scheiße. :poop:',
             ':poop:',
             'Ich liebe dich auch... nicht.',
+            '/ban',
             'Nachdem du gestern mit meiner Freundin fremdgegangen bist, ist meine Antwort das hier: :knife:',
             'Was? Ich verstehe kein Idiotisch',
+            'Frag lieber ob es wieder Lucky Blocks geben wird.',
             'Du wirst niemals Glücklich werden nach dieser Frage...',
             'Hat deine Mutter dich als Kind auf dem Kopf fallen lassen?',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'B Ö L Ü M',
+            'Nein aber Lutz ist doof.',
             'War deine Schaukel als Kind gegen die Wand gerichtet?',
             'Ich sehe deine Zukunft... Und sehe Schwarz',
             'Well, duh',
@@ -64,16 +206,25 @@ module.exports = {
             'Bitte... Hör einfach auf...',
             'Darf ich dir Geld geben und du hörst auf mich jemals wieder anzusprechen?'
         ]
-        let randomNumber = Math.floor(Math.random()*antworten.length);
-        
-        let krassesEmbed = new Discord.MessageEmbed()
-        .setColor('#636363')
-        .setTitle(':8ball: 8Ball')
-        .setThumbnail('https://cdn.pixabay.com/photo/2015/09/05/07/17/pool-ball-923833_960_720.png')
-        .addField('Frage', frage)
-        .addField('Antwort', antworten[randomNumber])
-        .setFooter('Question by ' + interaction.user.username, interaction.user.displayAvatarURL)
 
-        await interaction.reply({embeds: [krassesEmbed]});
-	},
+
+        for (let i = antworten.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = antworten[i];
+            antworten[i] = antworten[j];
+            antworten[j] = temp;
+        }
+
+        let randomNumber = Math.floor(Math.random() * antworten.length);
+
+        let krassesEmbed = new Discord.MessageEmbed()
+            .setColor('#636363')
+            .setTitle(':8ball: 8Ball')
+            .setThumbnail('https://cdn.pixabay.com/photo/2015/09/05/07/17/pool-ball-923833_960_720.png')
+            .addField('Frage', frage)
+            .addField('Antwort', antworten[randomNumber])
+            .setFooter('Question by ' + interaction.user.username, interaction.user.displayAvatarURL)
+
+        await interaction.reply({ embeds: [krassesEmbed] });
+    },
 };
