@@ -31,7 +31,7 @@ module.exports = {
         } else {
             antworten = [
                 `*${interaction.user} ist total happy!*`,
-                `*${interaction.user} ist absolut mega super duper happy!`,
+                `*${interaction.user} ist absolut mega super duper happy!*`,
                 `*${interaction.user} ist total happy!*`,
                 `*${interaction.user} ist mega gut gelaunt! Weiter so!*`,
                 `*${interaction.user} hat niemand der gute Laune will und gibt sich selber gute Laune!*`,
