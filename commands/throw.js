@@ -1,0 +1,135 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
+module.exports = {
+
+    data: new SlashCommandBuilder()
+        .setName('throw')
+        .setDescription('Bewirf Leute mit Random Dingen.')
+        .addUserOption(option => 
+            option.setName('user')
+            .setDescription('User den du bewerfen willst.')
+            .setRequired(true)),
+
+    /**
+     * @param {import('discord.js').Interaction} interaction
+     */
+    async execute(interaction) {
+        const toasterUser = interaction.options.getMember('user');
+        let antworten = [
+            `*${interaction.user} bewirft ${toasterUser} mit einem Toaster*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Küchenmaschine*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Kühlschrank*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Tom*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Deno*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Fernseher*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Waschmaschine*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Trockner*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Kloschüssel*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Tür*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Tomaten*`,
+            `*${interaction.user} bewirft ${toasterUser} mit nassen Lappen*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Schlappen*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Glas Flasche*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Tisch*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS1*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS2*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS3*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS4*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS5*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer PS6*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Wii-Mote weil ${interaction.user} "vergessen" hat das Bändchen umzubinden*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Wii-Mote weil ${interaction.user} das Bändchen umgebunden hat*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Auto*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Opel Astra*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Keyblade*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Gecko*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Sandkorn*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Genkidama*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Lichtschwert*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Pokeball... Gonna catch 'em all!*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Controller*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Lampe*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Granate*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Wurftsternen*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Duftbombe weil du stinkst*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Blatt*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Wattepad*`,
+            `*${interaction.user} bewirft ${toasterUser} mit -1 lagigen Klopapier*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Europalette*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Gabelstapler*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem 1ct*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem T-Shirt*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Jacke*`,
+            `*${interaction.user} bewirft ${toasterUser} mit sich selbst. YEEET*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Portal Gun*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Waifu-Pillow*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Schredder*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Schrank*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem ODM Gear*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Titan*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Shonen Protagonist*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Nudeln*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Ravioli*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Plastikstrohhalm*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Glasstrohhalm*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Plastikteller*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Pappteller*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Asthmaspray*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem TicTac*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Tafel Schokolade*`,
+            `*${interaction.user} bewirft ${toasterUser} mit dem Mastersword*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer aufgegessenen Chips Tüte*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Spiegel*`,
+            `*${interaction.user} bewirft ${toasterUser} mit schlechten Game Design*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Spitzhacke*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Plastikflugzeug*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Papierflugzeug*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Kreditkarte*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Teddybär*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer RTX 3080*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Nintendo Charakteren*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Cappy aus Mario Odyssey*`,
+            `*${interaction.user} bewirft ${toasterUser} mit den Infinity Stones*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Stormbraker*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Mjolnir*`,
+            `*${interaction.user} bewirft ${toasterUser} mit Captain America's Schild*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Gardine*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Hund*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Katze*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Hamster*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Pferd*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Schlange*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer giftigen Schlange*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Oculus Rift*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Ofen*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem heißen Ofen*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Lehrer*`,
+            `*${interaction.user} bewirft ${toasterUser} mit GLaDOS*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Zigarette*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem TARDIS*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Subwoofer*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Dubstep Gun*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Schneeball*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Dalek*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Feuerball*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Todesball*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einer Majoras Mask*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Triforce*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Ocarina of Time*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Drachi*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Wolfiii*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Lutz*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Floet*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Greeencube*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Pikmin*`,
+            `*${interaction.user} bewirft ${toasterUser} mit einem Bett*`,
+        ]
+        for (let i = antworten.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = antworten[i];
+            antworten[i] = antworten[j];
+            antworten[j] = temp;
+        }
+        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+    },
+};
