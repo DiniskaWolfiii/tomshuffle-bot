@@ -146,7 +146,8 @@ module.exports = {
             'Rickroll',
             'Hass',
             'schlechten Witzen',
-            'Komplimenten'
+            'Komplimenten',
+            'einem Schwarzen Loch'
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
