@@ -6,7 +6,7 @@ module.exports = {
         .setName('toaster')
         .setDescription('Wirf einen Toaster in Gesichter anderer Leute.')
         .addUserOption(option => 
-            option.name('user')
+            option.setName('user')
             .setDescription('User den du mit einem Toaster bewerfen willst.')
             .setRequired(true)),
 
