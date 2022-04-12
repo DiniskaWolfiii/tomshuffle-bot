@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
 
     data: new SlashCommandBuilder()
-        .setName('throw')
+        .setName('werfen')
         .setDescription('Bewirf Leute mit Random Dingen.')
         .addUserOption(option => 
             option.setName('user')
@@ -22,7 +22,7 @@ module.exports = {
             'Tom',
             'Deno',
             'einem Fernseher',
-            'einem Waschmaschine',
+            'einer Waschmaschine',
             'einem Trockner',
             'einer Kloschüssel',
             'einer Tür',
@@ -57,7 +57,7 @@ module.exports = {
             '-1 lagigen Klopapier',
             'einer Europalette',
             'einem Gabelstapler',
-            'einem 1ct',
+            '1ct',
             'einem T-Shirt',
             'einer Jacke',
             'sich selbst. YEEET',
@@ -84,7 +84,7 @@ module.exports = {
             'einer Spitzhacke',
             'einem Plastikflugzeug',
             'einem Papierflugzeug',
-            'einem Kreditkarte',
+            'einer Kreditkarte',
             'einem Teddybär',
             'einer RTX 3080',
             'Nintendo Charakteren',
@@ -95,7 +95,7 @@ module.exports = {
             'Captain Americas Schild',
             'einer Gardine',
             'einem Hund',
-            'einem Katze',
+            'einer Katze',
             'einem Hamster',
             'einem Pferd',
             'einer Schlange',
@@ -115,7 +115,7 @@ module.exports = {
             'einem Todesball',
             'einer Majoras Mask',
             'einem Triforce',
-            'einem Ocarina of Time',
+            'einer Ocarina of Time',
             'einem Drachi',
             'einem Wolfiii',
             'einem Lutz',
@@ -147,7 +147,8 @@ module.exports = {
             'Hass',
             'schlechten Witzen',
             'Komplimenten',
-            'einem Schwarzen Loch'
+            'einem Schwarzen Loch',
+            'eine UNO Reverse Karte'
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
