@@ -120,7 +120,7 @@ module.exports = {
             'einem Wolfiii',
             'einem Lutz',
             'einem Floet',
-            'einem Greeencube',
+            'einem Greencube',
             'einem Pikmin',
             'einem Bett',
             'Schulden',
@@ -148,7 +148,10 @@ module.exports = {
             'schlechten Witzen',
             'Komplimenten',
             'einem Schwarzen Loch',
-            'eine UNO Reverse Karte'
+            'eine UNO Reverse Karte',
+            'Kondomen',
+            'einem Kondom',
+            'einem gebrauchten Kondom'
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
