@@ -13,7 +13,21 @@ module.exports = {
             'Wie heißt Obama mit Nachnamen?',
             'Roboter übernehmen die Meschheit! 🤖',
 			'Wie pusten Drachen Kerzen aus?',
-            'A party without a cake is just a meeting.'
+            'A party without a cake is just a meeting.',
+            'Schaut alte Projekte an...',
+            'Löscht alte Videos von Tom... 🤓',
+            'Geht die Audit Logs durch... 👀',
+            'Kontrolliert die User... 👀',
+            'Kontrolliert die Mods... 👀',
+            'Kontrolliert die Admins... 👀',
+            'Kontrolliert Tom... 👀',
+            'Kontrolliert Deno... 👀',
+            'Kontrolliert die Bots... 👀',
+            'Plant neue Video Projekte...',
+            'Schaut um sich umher...',
+            'Schnuppert an Blumen... 🌸',
+            'Sorgt für Recht und Ordnung...',
+            '👀'
         ]
 
         client.user.setActivity(stati[Math.floor(Math.random() * stati.length)], { type: 'PLAYING' });
