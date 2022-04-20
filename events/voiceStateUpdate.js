@@ -51,7 +51,7 @@ module.exports = {
         }
         if (oldState.channelId === '941422962056265748') return; // Wenn verlassener Kanal der "Kanal erstellen" ist, nichts machen
         if (oldState.channel.parentId === '941422858607931442' && oldState.channel.members.size === 0) {
-            oldState.guild.channels.fetch(c => c.topic === oldState.channelId)
+            oldState.guild.channels.cache.get(oldState.channelId)
             .then(kanal => kanal.delete());
             oldState.channel.delete();
         }
