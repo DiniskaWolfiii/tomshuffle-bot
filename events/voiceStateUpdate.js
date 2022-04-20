@@ -57,7 +57,7 @@ module.exports = {
             // If User is joined, give him right to send Messages into TextChannel
             if (newState.channel.parentId === joinToCreateParent && newState.channelId !== joinToCreate && newState.channel.members.size !== 0) {
                 let meinKanal = getChannelByTopic(newState);
-                meinKanal.permissionOverwrites.edit(newState.member.id, { VIEW_CHANNEL: true, SEND_MESSAGES: true, READ_MESSAGE_HISTORY: true });
+                meinKanal.permissionOverwrites.edit(newState.member.id, { VIEW_CHANNEL: true, SEND_MESSAGES: true, READ_MESSAGE_HISTORY: true , EMBED_LINKS: true, ATTACH_FILES: true});
                 return;
             }
         } // If VoiceStateUpdate Event is a LEAVE 
@@ -67,7 +67,7 @@ module.exports = {
             // If User has leaved, remove rights to send Messages into TextChannel
             if (oldState.channel.parentId === joinToCreateParent && oldState.channelId !== joinToCreate && oldState.channel.members.size !== 0) {
                 let meinKanal = getChannelByTopic(oldState);
-                meinKanal.permissionOverwrites.edit(oldState.member.id, { VIEW_CHANNEL: false, SEND_MESSAGES: false, READ_MESSAGE_HISTORY: false });
+                meinKanal.permissionOverwrites.edit(oldState.member.id, { VIEW_CHANNEL: false, SEND_MESSAGES: false, READ_MESSAGE_HISTORY: false , EMBED_LINKS: false, ATTACH_FILES: false});
                 return;
             }
             // If last User leaved, Delete the VoiceChannel and TextChannel and return
