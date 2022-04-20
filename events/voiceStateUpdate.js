@@ -8,7 +8,7 @@ module.exports = {
     execute(oldState, newState) {
 
         let joinToCreate = '941422962056265748';
-        let createdChannel;
+        let createdChannelId;
 
         if (newState.channelId === joinToCreate && newState.channel.members.size !== 0) {
 
@@ -28,12 +28,15 @@ module.exports = {
                     },
                 ],
             })
-                .then(newChannel => newState.setChannel(newChannel));
+                .then(newChannel => {
+                    newState.setChannel(newChannel)
+                    createdChannelId = newChannel.id;
+                })
                 
 
             newState.guild.channels.create(newState.member.user.username, {
                 type: 'GUILD_TEXT',
-                topic: '0123456',
+                topic: createdChannelId,
                 parent: '941422858607931442',
                 position: 30000,
                 permissionOverwrites: [
