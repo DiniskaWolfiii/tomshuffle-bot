@@ -29,7 +29,7 @@ module.exports = {
                         },
                         {
                             id: newState.member.guild.id,
-                            allow: ['VIEW_CHANNEL', 'SPEAK', 'CONNECT']
+                            allow: ['VIEW_CHANNEL', 'SPEAK', 'CONNECT', 'ATTACH_FILES', 'EMBED_LINKS']
                         },
                     ],
                 })
