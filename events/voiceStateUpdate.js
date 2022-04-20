@@ -36,7 +36,7 @@ module.exports = {
 
             newState.guild.channels.create(newState.member.user.username, {
                 type: 'GUILD_TEXT',
-                topic: createdChannelId,
+                topic: `${createdChannelId}`,
                 parent: '941422858607931442',
                 position: 30000,
                 permissionOverwrites: [
