@@ -30,22 +30,19 @@ module.exports = {
             })
                 .then(newChannel => {
                     newState.setChannel(newChannel)
-                    createdChannelId = newChannel.id;
+                    newState.guild.channels.create(newState.member.user.username, {
+                        type: 'GUILD_TEXT',
+                        topic: newChannel.id,
+                        parent: '941422858607931442',
+                        position: 30000,
+                        permissionOverwrites: [
+                            {
+                                id: newState.member.guild.id,
+                                deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
+                            }
+                        ]
+                    })
                 })
-                
-
-            newState.guild.channels.create(newState.member.user.username, {
-                type: 'GUILD_TEXT',
-                topic: `${createdChannelId}`,
-                parent: '941422858607931442',
-                position: 30000,
-                permissionOverwrites: [
-                    {
-                        id: newState.member.guild.id,
-                        deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
-                    }
-                ]
-            })
             return;
         }
         if (oldState.channelId === '941422962056265748') return;
