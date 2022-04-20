@@ -28,8 +28,8 @@ module.exports = {
                     },
                 ],
             })
-                .then(newChannel => createdChannel = newChannel);
-                newState.setChannel(createdChannel)
+                .then(newChannel => newState.setChannel(newChannel));
+                
 
             newState.guild.channels.create(newState.member.user.username, {
                 type: 'GUILD_TEXT',
