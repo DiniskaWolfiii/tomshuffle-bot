@@ -110,7 +110,7 @@ function removeTextPermission(channelState) {
 function createVoiceAndTextChannel(channelState) {
     channelState.guild.channels.create(channelState.member.user.username + "'s Voice", {
         type: 'GUILD_VOICE',
-        parent: joinToCreateParent,
+        parent: '941422858607931442',
         position: 30000,
         userLimit: 5,
         permissionOverwrites: [
@@ -129,7 +129,7 @@ function createVoiceAndTextChannel(channelState) {
             channelState.guild.channels.create(channelState.member.user.username, {
                 type: 'GUILD_TEXT',
                 topic: newChannel.id,
-                parent: joinToCreateParent,
+                parent: '941422858607931442',
                 position: 30000,
                 permissionOverwrites: [
                     {
