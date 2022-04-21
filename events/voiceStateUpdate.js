@@ -65,8 +65,7 @@ module.exports = {
             if (oldState.channelId === joinToCreate) return;
             // If User has leaved, remove rights to send Messages into TextChannel
             if (oldState.channel.parentId === joinToCreateParent && oldState.channelId !== joinToCreate && oldState.channel.members.size !== 0) {
-                let meinKanal = getChannelByTopic(oldState);
-                meinKanal.permissionOverwrites.edit(oldState.member.id, { VIEW_CHANNEL: false, SEND_MESSAGES: false, READ_MESSAGE_HISTORY: false, EMBED_LINKS: false, ATTACH_FILES: false });
+                removeTextPermission(oldState);
                 return;
             }
             // If last User leaved, Delete the VoiceChannel and TextChannel and return
@@ -81,10 +80,27 @@ module.exports = {
         }
         // If VoiceStateUpdate is a User who switched Channels
         else {
+            // If User switched from Join To Create Channel to Temp Channel
+            if (oldState.channelId === joinToCreate) return;
             // If User switched from a normal Channel to Temp Channel
-            if (oldState.channel.parentId !== joinToCreateParent && newState.channel.parentId === joinToCreateParent && newState.channelId !== joinToCreate) {
+            else if (oldState.channel.parentId !== joinToCreateParent && newState.channel.parentId === joinToCreateParent && newState.channelId !== joinToCreate) {
                 giveTextPermission(newState);
                 return;
+            }
+            // If User switched from Temp Channel to Normal Channel
+            else if (oldState.channel.parentId === joinToCreateParent && newState.channel.parentId !== joinToCreateParent) {
+                // If User was last User, delete VoiceChannel and TextChannel
+                if (oldState.channel.members.size === 0) {
+                    const textChannel = getChannelByTopic(oldState);
+                    textChannel.delete();
+                    oldState.channel.delete();
+                    return;
+                }
+                // If User was not the last User, remove rights in TextChannel
+                else {
+                    removeTextPermission(oldState);
+                    return;
+                }
             }
         }
     }
@@ -112,4 +128,8 @@ function getChannelByTopic(channelState) {
 function giveTextPermission(channelState) {
     let meinKanal = getChannelByTopic(channelState);
     meinKanal.permissionOverwrites.edit(channelState.member.id, { VIEW_CHANNEL: true, SEND_MESSAGES: true, READ_MESSAGE_HISTORY: true, EMBED_LINKS: true, ATTACH_FILES: true });
+}
+function removeTextPermission(channelState) {
+    let meinKanal = getChannelByTopic(channelState);
+    meinKanal.permissionOverwrites.edit(channelState.member.id, { VIEW_CHANNEL: false, SEND_MESSAGES: false, READ_MESSAGE_HISTORY: false, EMBED_LINKS: false, ATTACH_FILES: false });
 }
