@@ -86,6 +86,21 @@ module.exports = {
                     return;
                 }
             }
+            // If User switched from Temp Channel to another Temp Channel
+            else if(oldState.channel.parentId === joinToCreateParent && newState.channel.parentId === joinToCreateParent) {
+                // If User was last User, Delete Channels
+                if(oldState.channel.members.size === 0) {
+                    const textChannel = getChannelByTopic(oldState);
+                    textChannel.delete();
+                    oldState.channel.delete();
+                }
+                // If User was not last User, just remove Permission from Text Channel
+                else {
+                    removeTextPermission(oldState);
+                }
+                giveTextPermission(newState);
+                return;
+            }
         }
     }
 }
