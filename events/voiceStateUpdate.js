@@ -16,42 +16,7 @@ module.exports = {
         if (oldState.channelId == null) {
             // Create new VoiceChannel and TextChannel - TextChannel with the topic of the ID from VoiceChannel and return
             if (newState.channelId === joinToCreate) {
-
-                newState.guild.channels.create(newState.member.user.username + "'s Voice", {
-                    type: 'GUILD_VOICE',
-                    parent: '941422858607931442',
-                    position: 30000,
-                    userLimit: 5,
-                    permissionOverwrites: [
-                        {
-                            id: newState.member.user.id,
-                            allow: ['MANAGE_CHANNELS', 'MOVE_MEMBERS', 'MANAGE_ROLES', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS', 'PRIORITY_SPEAKER', 'CONNECT', 'VIEW_CHANNEL', 'SPEAK']
-                        },
-                        {
-                            id: newState.member.guild.id,
-                            allow: ['VIEW_CHANNEL', 'SPEAK', 'CONNECT', 'ATTACH_FILES', 'EMBED_LINKS']
-                        },
-                    ],
-                })
-                    .then(newChannel => {
-                        newState.setChannel(newChannel)
-                        newState.guild.channels.create(newState.member.user.username, {
-                            type: 'GUILD_TEXT',
-                            topic: newChannel.id,
-                            parent: '941422858607931442',
-                            position: 30000,
-                            permissionOverwrites: [
-                                {
-                                    id: newState.member.guild.id,
-                                    deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
-                                },
-                                {
-                                    id: newState.member.user.id,
-                                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
-                                }
-                            ]
-                        })
-                    })
+                createVoiceAndTextChannel(newState);
                 return;
             }
             // If User is joined, give him right to send Messages into TextChannel
@@ -59,7 +24,8 @@ module.exports = {
                 giveTextPermission(newState);
                 return;
             }
-        } // If VoiceStateUpdate Event is a LEAVE 
+        } 
+        // If VoiceStateUpdate Event is a LEAVE 
         else if (newState.channelId == null) {
             // If leaved Channel is "Create a Channel" -> Do nothing and return
             if (oldState.channelId === joinToCreate) return;
@@ -102,6 +68,14 @@ module.exports = {
                     return;
                 }
             }
+            // If User switched to Join To Create
+            else if (newState.channelId === joinToCreate) {
+                // If Old Channel is not in the Join To Create Category, Create Channel like normal
+                if(oldState.channel.parentId !== joinToCreateParent) {
+                    createVoiceAndTextChannel(newState);
+                    return;
+                }
+            }
         }
     }
 }
@@ -132,4 +106,41 @@ function giveTextPermission(channelState) {
 function removeTextPermission(channelState) {
     let meinKanal = getChannelByTopic(channelState);
     meinKanal.permissionOverwrites.edit(channelState.member.id, { VIEW_CHANNEL: false, SEND_MESSAGES: false, READ_MESSAGE_HISTORY: false, EMBED_LINKS: false, ATTACH_FILES: false });
+}
+function createVoiceAndTextChannel(channelState) {
+    channelState.guild.channels.create(channelState.member.user.username + "'s Voice", {
+        type: 'GUILD_VOICE',
+        parent: joinToCreateParent,
+        position: 30000,
+        userLimit: 5,
+        permissionOverwrites: [
+            {
+                id: channelState.member.user.id,
+                allow: ['MANAGE_CHANNELS', 'MOVE_MEMBERS', 'MANAGE_ROLES', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS', 'PRIORITY_SPEAKER', 'CONNECT', 'VIEW_CHANNEL', 'SPEAK']
+            },
+            {
+                id: channelState.member.guild.id,
+                allow: ['VIEW_CHANNEL', 'SPEAK', 'CONNECT', 'ATTACH_FILES', 'EMBED_LINKS']
+            },
+        ],
+    })
+        .then(newChannel => {
+            channelState.setChannel(newChannel)
+            channelState.guild.channels.create(channelState.member.user.username, {
+                type: 'GUILD_TEXT',
+                topic: newChannel.id,
+                parent: joinToCreateParent,
+                position: 30000,
+                permissionOverwrites: [
+                    {
+                        id: channelState.member.guild.id,
+                        deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
+                    },
+                    {
+                        id: channelState.member.user.id,
+                        allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
+                    }
+                ]
+            })
+        })
 }
