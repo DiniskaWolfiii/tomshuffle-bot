@@ -75,6 +75,16 @@ module.exports = {
                     createVoiceAndTextChannel(newState);
                     return;
                 }
+                // If Old Channel is in the Join To Create Category, check old Temp Channel and create new one
+                else {
+                    if(oldState.channel.members.size === 0) {
+                        const textChannel = getChannelByTopic(oldState);
+                        textChannel.delete();
+                        oldState.delete();
+                    }
+                    createVoiceAndTextChannel(newState);
+                    return;
+                }
             }
         }
     }
