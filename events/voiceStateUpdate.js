@@ -83,7 +83,8 @@ module.exports = {
         else {
             // If User switched from a normal Channel to Temp Channel
             if (oldState.channel.parentId !== joinToCreateParent && newState.channel.parentId === joinToCreateParent && newState.channelId !== joinToCreate) {
-
+                giveTextPermission(newState);
+                return;
             }
         }
     }
