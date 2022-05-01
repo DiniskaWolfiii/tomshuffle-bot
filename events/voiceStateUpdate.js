@@ -163,7 +163,7 @@ function createVoiceAndTextChannel(channelState) {
                     },
                     {
                         id: channelState.member.user.id,
-                        allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY']
+                        allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'ATTACH_FILES', 'EMBED_LINKS']
                     },
                     {
                         id: '297430394888912897',
