@@ -44,6 +44,10 @@ module.exports = {
                 return;
             }
         }
+        // If VoiceStateUpate is in the same channel
+        else if (oldState.channelId === newState.channelId) {
+            return;
+        }
         // If VoiceStateUpdate is a User who switched Channels
         else {
             // If User switched from Join To Create Channel to Temp Channel
