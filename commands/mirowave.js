@@ -31,7 +31,8 @@ module.exports = {
                 `*${interaction.user} packt ${microwaveUser} für 0,01W bei 96 Stunden Mikrowelle*`,
                 `*${interaction.user} wirft ${microwaveUser} mit Schmagges in die Mikrowelle*`,
                 `*${interaction.user} wirft ${microwaveUser} mit Schmagges in die Mikrowelle*`,
-                `*${interaction.user} stopft ${microwaveUser} in die Mikrowelle, schaltet sie an und geht weg*`
+                `*${interaction.user} stopft ${microwaveUser} in die Mikrowelle, schaltet sie an und geht weg*`,
+                `*${interaction.user} verwechselt die Mikrowelle mit der Sonne und wirft ${microwaveUser} in die Sonne :sunny:*`
             ]
         } else {
             antworten = [
