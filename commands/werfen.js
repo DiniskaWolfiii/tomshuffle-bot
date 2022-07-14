@@ -152,11 +152,34 @@ module.exports = {
             'Hass',
             'schlechten Witzen',
             'Komplimenten',
+            'Komplimenten',
+            'Komplimenten',
+            '~~Komplimenten~~',
             'einem Schwarzen Loch',
             'eine UNO Reverse Karte',
             'Kondomen',
             'einem Kondom',
-            'einem gebrauchten Kondom'
+            'einem Kondom',
+            'einem Kondom',
+            'einem gebrauchten Kondom',
+            'Discord',
+            'ICQ',
+            'Gardinen',
+            'ganz vielen Plüschtieren',
+            'einem Kissen',
+            'einem Haus',
+            'einem Bett',
+            'nichts',
+            'einer Bibel',
+            'Politikern',
+            'Mathe',
+            'Feenstaub',
+            'Diabetis',
+            'Atombomben',
+            'Dem Bundeskanzler',
+            'Zwillingen',
+            'einem Average Discord Mod',
+            'Internet'
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
@@ -165,8 +188,8 @@ module.exports = {
             antworten[j] = temp;
         }
         antworten[Math.floor(Math.random() *antworten.length)]
-        if(Math.random()*10===1) {
-            if(Math.random()*10===1) {
+        if(Math.random(Math.random)*10==1) {
+            if(Math.random(Math.random)*10==1) {
                 await interaction.reply(`TRIPLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}, ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
             }
             await interaction.reply(`DOUBLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
