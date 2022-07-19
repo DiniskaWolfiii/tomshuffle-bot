@@ -16,10 +16,40 @@ module.exports = {
     async execute(interaction) {
         const hugUser = interaction.options.getMember('user');
 
+        let antworten;
+
         if (hugUser) {
-            if (hugUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-            return await interaction.reply(`*${interaction.user} gibt ${hugUser} eine Umarmung!*`)
+            if (hugUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken!', ephemeral: true })
+
+            antworten = [
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} umarmt ${hugUser}*`,
+                `*${interaction.user} zerquetscht ${hugUser}*`
+            ]
+        } else {
+            antworten = [
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} will umarmt werden*`,
+                `*${interaction.user} hat das Verlangen umarmt zu werden*`,
+                `*${interaction.user} braucht jemand der ihn/sie umarmt*`,
+                `*${interaction.user} umarmt sich selbst*`,
+                `*${interaction.user} umarmt sich selbst... Kann bitte jemand helfen?*`,
+                `*${interaction.user} zerquetscht sich selbst...*`
+            ]
         }
-        await interaction.reply(`*${interaction.user} hat das Bedürfniss jemanden zu umarmen...*`)
     },
 };
