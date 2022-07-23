@@ -14,10 +14,10 @@ module.exports = {
  */
 	async execute(interaction) {
 		await interaction.deferReply({ephemeral: true});
-		if (interaction.user.id !== ownerId) return await interaction.editReply({content: 'Du bist nicht Wolfiii!', ephemeral: true});
+		if (interaction.user.id !== ownerId) return await interaction.editReply('Du bist nicht Wolfiii!');
         shelljs.cd('/home/wolfiii/bots/tomshuffle-bot')
         shelljs.exec('git pull')
         shelljs.exec('npm i')
-        await interaction.editReply({content: ':bulb: Pulled!', ephemeral: true})
+        await interaction.editReply(':bulb: Pulled!')
 	},
 };

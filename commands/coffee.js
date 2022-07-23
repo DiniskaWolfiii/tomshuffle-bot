@@ -19,7 +19,6 @@ module.exports = {
         let antworten;
 
         if (coffeeUser) {
-            if (coffeeUser.user.id === interaction.user.id) return interaction.editReply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
             
             antworten = [
                 `*${interaction.user} gibt ${coffeeUser} einen Latte Macchiato*`,

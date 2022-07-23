@@ -19,7 +19,6 @@ module.exports = {
         let antworten;
 
         if (coronaUser) {
-            if (coronaUser.user.id === interaction.user.id) return await interaction.editReply({content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true});
             
             antworten = [
                 `*${interaction.user} testet ${coronaUser} auf Corona... Der Test zeigt Negativ an!*`,

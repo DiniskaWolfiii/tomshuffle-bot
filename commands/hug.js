@@ -20,7 +20,6 @@ module.exports = {
         let antworten;
 
         if (hugUser) {
-            if (hugUser.user.id === interaction.user.id) return await interaction.editReply({ content: 'Du kannst den Command nicht auf dich selber wirken!', ephemeral: true })
 
             antworten = [
                 `*${interaction.user} umarmt ${hugUser}*`,

@@ -19,7 +19,6 @@ module.exports = {
         let antworten;
 
         if (microwaveUser) {
-            if (microwaveUser.user.id === interaction.user.id) return await interaction.editReply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
 
             antworten = [
                 `*${interaction.user} packt ${microwaveUser} in die Mikrowelle*`,
