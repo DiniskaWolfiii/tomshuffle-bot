@@ -13,7 +13,7 @@ module.exports = {
  * @param {import('discord.js').Interaction} interaction
  */
 	async execute(interaction) {
-		await interaction.deferReply();
+		await interaction.deferReply({ephemeral: true});
 		if (interaction.user.id !== ownerId) return await interaction.editReply({content: 'Du bist nicht Wolfiii!', ephemeral: true});
         shelljs.cd('/home/wolfiii/bots/tomshuffle-bot')
         shelljs.exec('git pull')
