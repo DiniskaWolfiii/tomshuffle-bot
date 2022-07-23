@@ -6,7 +6,7 @@ module.exports = {
 
 	data: new SlashCommandBuilder()
 		.setName('reboot')
-		.setDescription('Startet den Bot neu. Wolfiii Only!'),
+		.setDescription('Startet den Bot neu. Mod-Team Only!'),
 		
 /**
  * @param {import('discord.js').Interaction} interaction

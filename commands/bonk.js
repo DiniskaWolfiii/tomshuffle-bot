@@ -4,7 +4,7 @@ module.exports = {
 
     data: new SlashCommandBuilder()
         .setName('bonk')
-        .setDescription('TBonke einen anderen User')
+        .setDescription('Bonke einen anderen User')
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('User den du bonken')
