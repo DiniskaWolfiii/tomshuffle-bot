@@ -12,6 +12,7 @@ module.exports = {
  * @param {import('discord.js').Interaction} interaction
  */
 	async execute(interaction) {
+		await interaction.deferReply();
 		if(interaction.member.roles.cache.some(r=>r.id===modRole) || interaction.member.roles.cache.some(r=>r.id===adminRole) || interaction.user.id===ownerId) {
         await interaction.reply({content: 'Be right back... :zzz:', ephemeral: true})
         interaction.client.destroy();

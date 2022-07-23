@@ -14,6 +14,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const coronaUser = interaction.options.getMember('user');
         let antworten;
 

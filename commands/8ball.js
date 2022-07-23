@@ -15,6 +15,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const Discord = require('discord.js');
         const frage = interaction.options.getString('frage');
         let antworten = [

@@ -16,6 +16,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const auswahl = interaction.options.getString('truth-or-dare');
         let antworten;
         if (auswahl === 'td-truth') {
