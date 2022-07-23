@@ -20,7 +20,7 @@ module.exports = {
         let antworten;
 
         if (hugUser) {
-            if (hugUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken!', ephemeral: true })
+            if (hugUser.user.id === interaction.user.id) return await interaction.editReply({ content: 'Du kannst den Command nicht auf dich selber wirken!', ephemeral: true })
 
             antworten = [
                 `*${interaction.user} umarmt ${hugUser}*`,
@@ -52,6 +52,6 @@ module.exports = {
                 `*${interaction.user} zerquetscht sich selbst...*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

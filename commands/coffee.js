@@ -19,7 +19,7 @@ module.exports = {
         let antworten;
 
         if (coffeeUser) {
-            if (coffeeUser.user.id === interaction.user.id) return interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
+            if (coffeeUser.user.id === interaction.user.id) return interaction.editReply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
             
             antworten = [
                 `*${interaction.user} gibt ${coffeeUser} einen Latte Macchiato*`,
@@ -52,7 +52,7 @@ module.exports = {
             ]
         }
         let randomNumber = Math.floor(Math.random() * antworten.length);
-        await interaction.reply(antworten[randomNumber])
+        await interaction.editReply(antworten[randomNumber])
 
     },
 };

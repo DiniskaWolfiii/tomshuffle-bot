@@ -218,9 +218,9 @@ module.exports = {
         antworten[Math.floor(Math.random() *antworten.length)]
         if(Math.random(Math.random)*10==1) {
             if(Math.random(Math.random)*10==1) {
-                await interaction.reply(`TRIPLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}, ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
+                await interaction.editReply(`TRIPLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}, ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
             }
-            await interaction.reply(`DOUBLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
-        } else await interaction.reply(`${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}`)
+            await interaction.editReply(`DOUBLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
+        } else await interaction.editReply(`${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}`)
     },
 };

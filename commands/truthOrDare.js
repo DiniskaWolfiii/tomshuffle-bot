@@ -42,7 +42,7 @@ module.exports = {
                 'Was war der größte Fehler den du je begangen hast?',
                 'Wen in der Runde würdest du küssen wenn du müsstest?'
             ]
-            await interaction.reply('Truth: ' + antworten[Math.floor(Math.random() * antworten.length)])
+            await interaction.editReply('Truth: ' + antworten[Math.floor(Math.random() * antworten.length)])
         }
         else {
             antworten = [
@@ -60,7 +60,7 @@ module.exports = {
                 'Sprich mit einem bayrischen/sächsischen/anderem Dialekt',
                 'Führe eine 3-Minütige Stand-Up-Comendyshow auf'
             ]
-            await interaction.reply('Dare: ' + antworten[Math.floor(Math.random() * antworten.length)])
+            await interaction.editReply('Dare: ' + antworten[Math.floor(Math.random() * antworten.length)])
         }
     },
 };

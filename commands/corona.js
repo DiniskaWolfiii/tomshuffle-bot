@@ -19,7 +19,7 @@ module.exports = {
         let antworten;
 
         if (coronaUser) {
-            if (coronaUser.user.id === interaction.user.id) return await interaction.reply({content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true});
+            if (coronaUser.user.id === interaction.user.id) return await interaction.editReply({content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true});
             
             antworten = [
                 `*${interaction.user} testet ${coronaUser} auf Corona... Der Test zeigt Negativ an!*`,
@@ -47,6 +47,6 @@ module.exports = {
                 `*${interaction.user} hält einen Corona-Test in der Hand :test_tube:*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

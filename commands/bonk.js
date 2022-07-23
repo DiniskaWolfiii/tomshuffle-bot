@@ -43,7 +43,7 @@ module.exports = {
             ]
         }
         let randomNumber = Math.floor(Math.random() * antworten.length);
-        await interaction.reply(antworten[randomNumber])
+        await interaction.editReply(antworten[randomNumber])
 
     },
 };

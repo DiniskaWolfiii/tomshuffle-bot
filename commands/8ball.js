@@ -225,6 +225,6 @@ module.exports = {
             .addField('Antwort', antworten[randomNumber])
             .setFooter('Question by ' + interaction.user.username, interaction.user.displayAvatarURL)
 
-        await interaction.reply({ embeds: [krassesEmbed] });
+        await interaction.editReply({ embeds: [krassesEmbed] });
     },
 };
