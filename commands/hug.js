@@ -52,5 +52,6 @@ module.exports = {
                 `*${interaction.user} zerquetscht sich selbst...*`
             ]
         }
+        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };
