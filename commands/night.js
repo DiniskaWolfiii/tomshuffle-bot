@@ -17,7 +17,7 @@ module.exports = {
         await interaction.deferReply();
         const goodNightUser = interaction.options.getMember('user');
 
-        if (goodNightUser) await interaction.editReply(`*${interaction.user} wünscht ${goodNightUser} eine gute Nacht! :zzz:*`);
+        if (goodNightUser) return await interaction.editReply(`*${interaction.user} wünscht ${goodNightUser} eine gute Nacht! :zzz:*`);
         await interaction.editReply(`*${interaction.user} wünscht allen eine gute Nacht! :zzz:*`);
     },
 };
