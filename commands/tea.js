@@ -15,11 +15,11 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const teaUser = interaction.options.getMember('user');
         let antworten;
 
         if (teaUser) {
-            if (teaUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
             antworten = [
                 `*${interaction.user} gibt ${teaUser} eine Tasse Tee*`,
                 `*${interaction.user} gibt ${teaUser} eine Tasse English Breakfast Tee*`,
@@ -48,6 +48,6 @@ module.exports = {
                 `*${interaction.user} trinkt eine Tasse Chai Tea Latte*`,
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

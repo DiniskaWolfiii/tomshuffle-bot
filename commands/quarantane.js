@@ -14,12 +14,12 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const quarantaneUser = interaction.options.getMember('user');
         let antworten;
 
         if (quarantaneUser) {
-            if (quarantaneUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-
+            
             antworten = [
                 `*${interaction.user} schiebt ${quarantaneUser} in Quarantäne! 14 Tage ab jetzt*`,
                 `*${interaction.user} schiebt ${quarantaneUser} in Quarantäne!*`,
@@ -38,6 +38,6 @@ module.exports = {
                 `*${interaction.user} geht in Quarantäne*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

@@ -14,18 +14,18 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
-        const beerUser = interaction.options.getMember('user');
+        await interaction.deferReply();
+        const prostUser = interaction.options.getMember('user');
         let antworten;
 
-        if (beerUser) {
-            if (beerUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
+        if (prostUser) {
             antworten = [
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Bier an :beers:*`,
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Bier an :beers:*`,
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Bier an :beers:*`,
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Bier an :beers:*`,
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Bier an :beers:*`,
-                `*${interaction.user} stoßt mit ${beerUser} auf ein Radler an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Bier an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Bier an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Bier an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Bier an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Bier an :beers:*`,
+                `*${interaction.user} stoßt mit ${prostUser} auf ein Radler an :beers:*`,
             ]
         } else {
             antworten = [
@@ -38,6 +38,6 @@ module.exports = {
                 `*${interaction.user} hat niemanden zum Antoßen... :beers:*`,
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

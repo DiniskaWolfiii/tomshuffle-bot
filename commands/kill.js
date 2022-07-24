@@ -14,12 +14,12 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const killUser = interaction.options.getMember('user');
         let antworten;
 
         if (killUser) {
-            if (killUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-
+            
             antworten = [
                 `*${interaction.user} bringt ${killUser} um :skull:*`,
                 `*${interaction.user} bringt ${killUser} um :skull:*`,
@@ -42,6 +42,6 @@ module.exports = {
                 `*${interaction.user} versucht sich selbst umzubringen... Hat aber vackackt :P*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

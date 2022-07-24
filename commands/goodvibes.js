@@ -14,12 +14,12 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const goodvibeUser = interaction.options.getMember('user');
         let antworten;
 
         if (goodvibeUser) {
-            if (goodvibeUser.user.id === interaction.user.id) return interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-
+            
             antworten = [
                 `*${interaction.user} verteilt Good Vibes an ${goodvibeUser}!*`,
                 `*${interaction.user} verteilt Good Vibes an ${goodvibeUser}!*`,
@@ -38,6 +38,6 @@ module.exports = {
                 `*${interaction.user} hat niemand der Good Vibes will und gibt sich selber gute Laune!*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

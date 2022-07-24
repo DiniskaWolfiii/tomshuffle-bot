@@ -14,11 +14,11 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const eatUser = interaction.options.getMember('user');
         let antworten;
 
         if (eatUser) {
-            if (eatUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true });
             
             antworten = [
                 `*${interaction.user} isst ${eatUser} :eyes:*`,
@@ -36,6 +36,6 @@ module.exports = {
                 `*${interaction.user} isst sich selbst... Zählt das jetzt als Kannibalismus??*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

@@ -14,12 +14,12 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const spoonUser = interaction.options.getMember('user');
         let antworten;
 
         if (spoonUser) {
-            if (spoonUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-
+            
             antworten = [
                 `*${interaction.user} löffelt ${spoonUser} eine :spoon:*`,
                 `*${interaction.user} löffelt ${spoonUser} eine :spoon:*`,
@@ -37,6 +37,6 @@ module.exports = {
                 `*${interaction.user} hebt einen Löffel :spoon:*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

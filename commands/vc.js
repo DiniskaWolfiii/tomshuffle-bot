@@ -14,6 +14,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
 
         const voiceUser = interaction.options.getMember('user');
 
@@ -36,6 +37,6 @@ module.exports = {
             `*${interaction.user} hat Bock mit ${voiceUser} zu labern*`
         ];
 
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

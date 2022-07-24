@@ -14,11 +14,11 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const gabelUser = interaction.options.getMember('user');
         let antworten;
 
         if (gabelUser) {
-            if (gabelUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true });
             
             antworten = [
                 `*${interaction.user} pickst ${gabelUser} mit einer Gabel. Haha, du wurdest aufgegabelt!*`,
@@ -33,6 +33,6 @@ module.exports = {
                 `*${interaction.user} hat Hunger und pickst sich selbst mit einer Gabel... Kann jemand helfen? Das sieht mir nicht ganz natürlich aus...*`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

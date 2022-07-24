@@ -10,6 +10,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
 
         let antworten = [
             `*${interaction.user} will den ganzen Chat kuscheln! :people_hugging:*`,
@@ -23,6 +24,6 @@ module.exports = {
             `*${interaction.user} umarmt den gesamten Chat! :people_hugging:*`,
             `*${interaction.user} zerdrückt den ganzen Chat! :people_hugging:*`,
         ]
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

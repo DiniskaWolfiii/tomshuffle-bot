@@ -15,19 +15,19 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
-        const waterUser = interaction.options.getMember('user');
+        await interaction.deferReply();
+        const splashUser = interaction.options.getMember('user');
         let antworten;
 
-        if (waterUser) {
-            if (waterUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
+        if (splashUser) {
             antworten = [
-                `*${interaction.user} spritzt ${waterUser} mit Wasser ab :sweat_drops:*`,
-                `*${interaction.user} spritzt ${waterUser} mit Wasser ab :sweat_drops:*`,
-                `*${interaction.user} spritzt ${waterUser} mit Wasser ab :sweat_drops:*`,
-                `*${interaction.user} spritzt ${waterUser} mit Wasser ab :sweat_drops:*`,
-                `*${interaction.user} spritzt ${waterUser} ab :sweat_drops:*`,
-                `*${interaction.user} nimmt ein Glas Wasser und wirfts nach ${waterUser} :sweat_drops:*`,
-                `*${interaction.user} nimmt ein Glas Wasser und wirfts nach ${waterUser} :sweat_drops:*`,
+                `*${interaction.user} spritzt ${splashUser} mit Wasser ab :sweat_drops:*`,
+                `*${interaction.user} spritzt ${splashUser} mit Wasser ab :sweat_drops:*`,
+                `*${interaction.user} spritzt ${splashUser} mit Wasser ab :sweat_drops:*`,
+                `*${interaction.user} spritzt ${splashUser} mit Wasser ab :sweat_drops:*`,
+                `*${interaction.user} spritzt ${splashUser} ab :sweat_drops:*`,
+                `*${interaction.user} nimmt ein Glas Wasser und wirfts nach ${splashUser} :sweat_drops:*`,
+                `*${interaction.user} nimmt ein Glas Wasser und wirfts nach ${splashUser} :sweat_drops:*`,
             ]
         } else {
             antworten = [
@@ -35,6 +35,6 @@ module.exports = {
                 `*${interaction.user} hat das Verlangen jemanden mit Wasser abzuspritzen* :eyes:`
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

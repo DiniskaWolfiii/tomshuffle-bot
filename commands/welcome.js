@@ -14,8 +14,9 @@ module.exports = {
  * @param {import('discord.js').Interaction} interaction
  */
 	async execute(interaction) {
+		await interaction.deferReply();
 		const welcomeUser = interaction.options.getMember('user');
 
-        await interaction.reply(`${interaction.user} heißt ${welcomeUser} herzlich Willkommen!`);
+        await interaction.editReply(`${interaction.user} heißt ${welcomeUser} herzlich Willkommen!`);
 	},
 };

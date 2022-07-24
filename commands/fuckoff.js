@@ -14,11 +14,11 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const fuckoffUser = interaction.options.getMember('user');
         let antworten;
 
         if (fuckoffUser) {
-            if (fuckoffUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
             
             antworten = [
                 `*${interaction.user} ist angepisst von ${fuckoffUser}... Fuck-Off...*`,
@@ -36,6 +36,6 @@ module.exports = {
                 `*${interaction.user} will einfach nicht mehr und schmeißt alles hin. FUCK-OFF!*`,
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

@@ -20,10 +20,11 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const feedUser = interaction.options.getMember('user');
         const feedStuff = interaction.options.getString('futter');
 
-        if (feedStuff) await interaction.reply(`*${interaction.user} füttert ${feedUser} mit ${feedStuff}*`)
+        if (feedStuff) await interaction.editReply(`*${interaction.user} füttert ${feedUser} mit ${feedStuff}*`)
         else { 
         let antworten = [
             `*${interaction.user} füttert ${feedUser}*`,
@@ -121,7 +122,7 @@ module.exports = {
             antworten[j] = temp;
         }
 
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     }
 
     },

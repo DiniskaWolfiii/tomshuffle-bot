@@ -14,6 +14,7 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const stupsUser = interaction.options.getMember('user');
         let antworten = [
                 `*${interaction.user} stupst ${stupsUser} an :point_right:*`,
@@ -22,6 +23,6 @@ module.exports = {
                 `*${interaction.user} stupst ${stupsUser} an und stirbt dadurch :point_right:*`,
                 `*${interaction.user} macht ein stupst Wettbewerb mit ${stupsUser} :point_right:... ${stupsUser} verliert und stirbt*`,
             ]
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

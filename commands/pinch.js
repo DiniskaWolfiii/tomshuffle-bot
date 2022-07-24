@@ -14,12 +14,12 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const pinchUser = interaction.options.getMember('user');
         let antworten;
 
         if (pinchUser) {
-            if (pinchUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken!', ephemeral: true })
-
+            
             antworten = [
                 `*${interaction.user} zwickt ${pinchUser}*`,
                 `*${interaction.user} zwickt ${pinchUser}*`,
@@ -56,6 +56,6 @@ module.exports = {
 
             ]
         }
-        await interaction.reply(antworten[Math.floor(Math.random() * antworten.length)])
+        await interaction.editReply(antworten[Math.floor(Math.random() * antworten.length)])
     },
 };

@@ -14,12 +14,10 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.deferReply();
         const milkUser = interaction.options.getMember('user');
 
-        if (milkUser) {
-            if (milkUser.user.id === interaction.user.id) return await interaction.reply({ content: 'Du kannst den Command nicht auf dich selber wirken! Für dich selbst, gib keinen User an.', ephemeral: true })
-            return await interaction.reply(`*${interaction.user} gibt ${milkUser} ein Glas Milch*`);
-        }
-        await interaction.reply(`*${interaction.user} holt ein Glas Milch*`);
+        if (milkUser) await interaction.editReply(`*${interaction.user} gibt ${milkUser} ein Glas Milch*`);
+        await interaction.editReply(`*${interaction.user} holt ein Glas Milch*`);
     },
 };
