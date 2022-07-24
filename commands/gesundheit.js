@@ -16,7 +16,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         const gesundheitUser = interaction.options.getMember('user');
-        await interaction.reply(`*${interaction.user} wünscht ${gesundheitUser} Gesundheit! :sneezing_face:*`);
+        await interaction.editReply(`*${interaction.user} wünscht ${gesundheitUser} Gesundheit! :sneezing_face:*`);
 
     },
 };

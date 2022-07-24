@@ -17,7 +17,7 @@ module.exports = {
         await interaction.deferReply();
         const loveUser = interaction.options.getMember('user');
 
-        if (loveUser) await interaction.editReply(`*${interaction.user} hat ${loveUser} ganz doll Lieb :heart:*`);
+        if (loveUser) return await interaction.editReply(`*${interaction.user} hat ${loveUser} ganz doll Lieb :heart:*`);
         await interaction.editReply(`*Richtige Einstellung ${interaction.user}! Erstmal sich selbst lieben :heart:*`);
     },
 };
