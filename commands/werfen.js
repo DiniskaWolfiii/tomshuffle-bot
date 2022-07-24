@@ -210,7 +210,29 @@ module.exports = {
             'einer Schneelawine',
             'Uran',
             'Iridium',
-            'Kalium'
+            'Kalium',
+            'einer Dilara',
+            'einer Chantal',
+            'einem Mehmet',
+            'dem Mond',
+            'dem Mond (Gewicht: ca. 1/3 deiner Mum)',
+            'einem AC-130',
+            'Soup',
+            'Soupra',
+            'Bohnensuppe',
+            'Bohnensuppe (Kaffee)',
+            'Beans',
+            'einer Kettensäge',
+            'Corona',
+            'einem Affen',
+            'Trump',
+            'Putin',
+            'Angela Merkel',
+            'einer Schneeflocke',
+            'einem Fussel',
+            'AIDS',
+            'Ligma',
+            "Breath'nt"
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
