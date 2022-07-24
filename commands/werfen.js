@@ -215,9 +215,8 @@ module.exports = {
             antworten[i] = antworten[j];
             antworten[j] = temp;
         }
-        antworten[Math.floor(Math.random() *antworten.length)]
-        if(Math.random(Math.random)*10==1) {
-            if(Math.random(Math.random)*10==1) {
+        if(Math.floor(Math.random*10)==1) {
+            if(Math.floor(Math.random*10)==1) {
                 await interaction.editReply(`TRIPLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]}, ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
             }
             await interaction.editReply(`DOUBLE THROW! ${interaction.user} bewirft ${toasterUser} mit ${antworten[Math.floor(Math.random() *antworten.length)]} und ${antworten[Math.floor(Math.random() *antworten.length)]}`);
