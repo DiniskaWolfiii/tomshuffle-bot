@@ -17,7 +17,7 @@ module.exports = {
         await interaction.deferReply();
         const goodMorningUser = interaction.options.getMember('user');
 
-        if (goodMorningUser) await interaction.editReply(`*${interaction.user} wünscht ${goodMorningUser} einen guten Morgen!*`);
+        if (goodMorningUser) return await interaction.editReply(`*${interaction.user} wünscht ${goodMorningUser} einen guten Morgen!*`);
         await interaction.editReply(`*${interaction.user} wünscht allen einen guten Morgen!*`);
     },
 };

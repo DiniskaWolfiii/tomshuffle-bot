@@ -17,7 +17,7 @@ module.exports = {
         await interaction.deferReply();
         const partyUser = interaction.options.getMember('user');
 
-        if (partyUser) await interaction.editReply(`*${interaction.user} macht Party mit ${partyUser}!*`);
+        if (partyUser) return await interaction.editReply(`*${interaction.user} macht Party mit ${partyUser}!*`);
         await interaction.editReply(`*${interaction.user} hat Bock auf Party!*`);
     },
 };

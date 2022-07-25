@@ -16,7 +16,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const niesUser = interaction.options.getMember('user');
-        if (niesUser) await interaction.editReply(`*${interaction.user} bringt ${niesUser} zum niesen! :sneezing_face: Hachooo!*`);
+        if (niesUser) return await interaction.editReply(`*${interaction.user} bringt ${niesUser} zum niesen! :sneezing_face: Hachooo!*`);
         await interaction.editReply(`*${interaction.user} niest! :sneezing_face: Hachooo!*`)
 
     },

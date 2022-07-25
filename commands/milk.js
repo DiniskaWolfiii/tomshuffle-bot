@@ -17,7 +17,7 @@ module.exports = {
         await interaction.deferReply();
         const milkUser = interaction.options.getMember('user');
 
-        if (milkUser) await interaction.editReply(`*${interaction.user} gibt ${milkUser} ein Glas Milch*`);
+        if (milkUser) return await interaction.editReply(`*${interaction.user} gibt ${milkUser} ein Glas Milch*`);
         await interaction.editReply(`*${interaction.user} holt ein Glas Milch*`);
     },
 };
