@@ -232,7 +232,9 @@ module.exports = {
             'einem Fussel',
             'AIDS',
             'Ligma',
-            "Breath'nt"
+            "Breath'nt",
+            'einer benutzten Atombombe',
+            'Kamehameha'
         ]
         for (let i = antworten.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() *(i + 1));
