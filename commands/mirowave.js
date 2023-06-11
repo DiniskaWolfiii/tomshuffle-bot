@@ -28,7 +28,7 @@ module.exports = {
                 `*${interaction.user} packt ${microwaveUser} bei 3000W für 5 Sekunden in die Mikrowelle*`,
                 `*${interaction.user} packt ${microwaveUser} bei 187W für 3 Stunden in die Mikrowelle*`,
                 `*${interaction.user} vergisst ${microwaveUser} in der Mikrowelle*`,
-                `*${interaction.user} packt ${microwaveUser} für 0,01W bei 96 Stunden Mikrowelle*`,
+                `*${interaction.user} packt ${microwaveUser} bei 0,01W für 96 Stunden in die Mikrowelle*`,
                 `*${interaction.user} wirft ${microwaveUser} mit Schmagges in die Mikrowelle*`,
                 `*${interaction.user} wirft ${microwaveUser} mit Schmagges in die Mikrowelle*`,
                 `*${interaction.user} stopft ${microwaveUser} in die Mikrowelle, schaltet sie an und geht weg*`,
