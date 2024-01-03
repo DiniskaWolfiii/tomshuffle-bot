@@ -30,6 +30,6 @@ module.exports = {
             '👀'
         ]
 
-        client.user.setActivity(stati[Math.floor(Math.random() * stati.length)], { type: 'PLAYING' });
+        client.user.setActivity(stati[Math.floor(Math.random() * stati.length)]);
     }
 }
