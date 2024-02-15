@@ -619,11 +619,10 @@ module.exports = {
             let krassesEmbed = new Discord.MessageEmbed()
                 .setColor('#636363')
                 .addFields(
-                    { name: 'Frage', value: frage },
-                    { name: 'Antwort', value: antwortenWithoutQuestion[randomNumber] }
+                    { name: 'Ratschlag', value: antwortenWithoutQuestion[randomNumber] }
                 )
                 .setTitle('Advice')
-                .setFooter('Frage von ' + interaction.user.username, interaction.user.displayAvatarURL)
+                .setFooter('Benötigt von' + interaction.user.username, interaction.user.displayAvatarURL)
 
             await interaction.editReply({ embeds: [krassesEmbed] });
         }
