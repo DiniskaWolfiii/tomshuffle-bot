@@ -622,7 +622,7 @@ module.exports = {
                     { name: 'Ratschlag', value: antwortenWithoutQuestion[randomNumber] }
                 )
                 .setTitle('Advice')
-                .setFooter('Benötigt von' + interaction.user.username, interaction.user.displayAvatarURL)
+                .setFooter('Benötigt von ' + interaction.user.username, interaction.user.displayAvatarURL)
 
             await interaction.editReply({ embeds: [krassesEmbed] });
         }
