@@ -50,8 +50,15 @@ class TempVoice(commands.Cog): # create a class for our cog that inherits from c
                 if len(before.channel.members) == 0: # if there are no more users in the channel
                     await before.channel.delete() # delete the channel
         pass
+
+
+
+
 def setup(bot): # this is called by Pycord to setup the cog
     bot.add_cog(TempVoice(bot)) # add the cog to the bot
+
+
+
 async def createTempVoice(bot, joinToCreateParent, member):
     category = bot.get_channel(joinToCreateParent) # get the category
     channel = await category.create_voice_channel(f"{member.display_name}'s Channel") # create the channel
