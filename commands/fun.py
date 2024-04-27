@@ -13,7 +13,7 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
     async def eightball(
             self,
             ctx,
-            question: discord.Option(discord.SlashCommandOptionType.string, description="Deine Frage an den 8ball", required=True)
+            question: discord.Option(discord.SlashCommandOptionType.string, description="Deine Frage an den 8ball", required=True) # type: ignore
         ):
         responses = [
             'Ja',
@@ -217,7 +217,7 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
     async def advice(
             self,
             ctx,
-            advice: discord.Option(discord.SlashCommandOptionType.string, description="Deine Frage", required=False)): 
+            advice: discord.Option(discord.SlashCommandOptionType.string, description="Deine Frage", required=False)):  # type: ignore
         advicesWithQuestion = [
             'Ja.',
             'Ja.',
