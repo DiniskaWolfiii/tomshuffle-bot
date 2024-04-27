@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import random
+import random
 
 class Fun(commands.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
@@ -800,6 +801,187 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
             embed.add_field(name='Antwort:', value=advicesWithoutQuestion[0], inline=False)
             embed.set_footer(text='Rat benötigt von ' + ctx.author.display_name)
             await ctx.respond(embed=embed)    
+
+    @discord.slash_command(name="beer", description="Trinke oder teile ein Bier mit jemandem.")
+    async def beer(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du ein Bier teilen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst kein Bier ausgeben! 🍻', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} ein Bier aus! 🍻')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} trinkt ein Bier! 🍻')
         
+    @discord.slash_command(name="bonk", description="Bonke jemanden.")
+    async def bonk(
+        self,
+        ctx,
+        member: discord.Option(discord.Member, "Der Benutzer, den du bonken möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst bonken! 🤜🧠', ephemeral=True)
+                return
+            if random.randint(1, 10) == 1:
+                await ctx.respond(f'{ctx.author.mention} bonkt {member.mention}... Go to Horny Jail! 🤜🧠')
+            else:
+                await ctx.respond(f'{ctx.author.mention} bonkt {member.mention}! 🤜🧠')
+
+    @discord.slash_command(name="boop", description="Boope jemanden.")
+    async def boop(
+        self,
+        ctx,
+        member: discord.Option(discord.Member, "Der Benutzer, den du boopen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst boopen! 👆👃', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} boopt {member.mention}! 👆👃')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} boopt sich selbst! 👆👃')
+
+    @discord.slash_command(name="coffee", description="Trinke oder teile einen Kaffee mit jemandem.")
+    async def coffee(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du einen Kaffee teilen möchtest.", required=False) # type: ignore
+        ):
+        coffee = [
+            'Latte Machiatto',
+            'Cappuccino',
+            'Espresso',
+            'Kaffee',
+            'Kakao',
+            'Chai Latte',
+            'Tee',
+            'Eiskaffee',
+            'Frappuccino',
+            'Mokka',
+            'Flat White',
+            'Macchiato',
+            'Cortado',
+            'Americano',
+            'Filterkaffee',
+            'Cold Brew',
+            'Nitro Coffee',
+            'Kaffee mit Milch',
+            'Kaffee mit Zucker',
+            'Kaffee mit Sahne',
+            'Kaffee mit Sirup',
+            'Kaffee mit Eis',
+            'Kaffee mit Schokolade',
+            'Kaffee mit Zimt',
+            'Kaffee mit Vanille',
+            'Kaffee mit Karamell',
+            'Kaffee mit Kokos',
+            'Kaffee mit Minze',
+            'Kaffee mit Honig',
+            'Kaffee mit Chili',
+            'Kaffee mit Ingwer',
+            'Kaffee mit Zitrone',
+            'Kaffee mit Orange',
+            'Kaffee mit Mandel',
+            'Kaffee mit Haselnuss',
+            'Kaffee mit Kürbis',
+            'Kaffee mit Pfefferminz',
+            'Starbucks Blonde Roast',
+            'Starbucks Pike Place Roast',
+            'Starbucks Veranda Blend',
+            'Starbucks House Blend',
+            'Starbucks Breakfast Blend',
+            'Starbucks Caffè Verona',
+            'Starbucks Espresso Roast',
+            'Starbucks French Roast',
+            'Starbucks Italian Roast',
+            'Starbucks Sumatra',
+            'Starbucks Kenya',
+            'Starbucks Ethiopia',
+            'Starbucks Guatemala Antigua',
+            'Starbucks Colombia',
+            'Starbucks Costa Rica',
+            'Starbucks Brazil',
+            'Starbucks Mexico',
+            'Starbucks Guatemala Casi Cielo',
+            'Starbucks Anniversary Blend',
+            'Starbucks Christmas Blend',
+            'Starbucks Pumpkin Spice Latte',
+            'Starbucks Salted Caramel Mocha',
+            'Starbucks Caramel Macchiato',
+            'Starbucks Vanilla Latte',
+            'Starbucks Cinnamon Dolce Latte',
+            'Starbucks White Chocolate Mocha',
+            'Starbucks Java Chip Frappuccino',
+            'Starbucks Green Tea Frappuccino',
+            'Starbucks Matcha Green Tea Latte',
+            'Starbucks Chai Tea Latte',
+            'Starbucks Iced Coffee',
+            'Starbucks Nitro Cold Brew',
+            'Starbucks Cold Brew',
+            'Starbucks Iced Caramel Macchiato',
+            'Starbucks Iced Vanilla Latte',
+            'Starbucks Iced Cinnamon Dolce Latte',
+            'Starbucks Iced White Chocolate Mocha',
+            'Starbucks Iced Green Tea Latte',
+            'Starbucks Iced Matcha Green Tea Latte',
+            'Starbucks Iced Chai Tea Latte',
+            'Starbucks Iced Passion Tango Tea',
+            'Starbucks Iced Peach Green Tea Lemonade',
+            'Starbucks Iced Guava Passionfruit Drink',
+            'Starbucks Iced Pineapple Matcha Drink',
+            'Starbucks Iced Golden Ginger Drink',
+            'Starbucks Iced Strawberry Green Tea Lemonade',
+            'Starbucks Iced Mango Dragonfruit Refresher',
+            'Starbucks Iced Berry Hibiscus Refresher',
+            'Starbucks Iced Peach Green Tea',
+            'Starbucks Iced Guava White Tea',
+            'Starbucks Iced Pineapple Matcha',
+            'Starbucks Iced Golden Ginger Ale',
+            'Starbucks Iced Strawberry Green Tea',
+            'Starbucks Iced Mango Dragonfruit',
+            'Starbucks Iced Berry Hibiscus',
+            'Starbucks Iced Peach Green Tea Lemonade',
+            'Starbucks Iced Guava Passionfruit Drink',
+            'Starbucks Iced Pineapple Matcha Drink',
+            'Starbucks Iced Golden Ginger Drink',
+            'Starbucks Iced Strawberry Green Tea Lemonade',
+            'Starbucks Iced Mango Dragonfruit Refresher',
+            'Starbucks Iced Berry Hibiscus Refresher',
+            'Starbucks Iced Peach Green Tea',
+            'Starbucks Iced Guava White Tea',
+            'Starbucks Iced Pineapple Matcha',
+            'Starbucks Iced Golden Ginger Ale',
+            'Starbucks Iced Strawberry Green Tea',
+            'Starbucks Iced Mango Dragonfruit',
+            'Starbucks Iced Berry Hibiscus'
+        ]
+        random.shuffle(coffee)
+        random_coffee = random.choice(coffee)
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst keinen Kaffee ausgeben! ☕', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} einen {random_coffee} aus! ☕')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} trinkt einen {random_coffee}! ☕')
+
+    @discord.slash_command(name="cookie", description="Iss oder teile einen Keks mit jemandem.")
+    async def cookie(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du einen Keks teilen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst keinen Keks geben! 🍪', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} einen Keks! 🍪')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} isst einen Keks! 🍪')
+
 def setup(bot): # this is called by Pycord to setup the cog
     bot.add_cog(Fun(bot)) # add the cog to the bot
