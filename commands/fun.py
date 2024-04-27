@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import os
 import random
-import random
 
 class Fun(commands.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
@@ -816,21 +815,6 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
         elif not member:
             await ctx.respond(f'{ctx.author.mention} trinkt ein Bier! 🍻')
         
-    @discord.slash_command(name="bonk", description="Bonke jemanden.")
-    async def bonk(
-        self,
-        ctx,
-        member: discord.Option(discord.Member, "Der Benutzer, den du bonken möchtest.") # type: ignore
-        ):
-        if member:
-            if member == ctx.author:
-                await ctx.respond('Du kannst dich nicht selbst bonken! 🤜🧠', ephemeral=True)
-                return
-            if random.randint(1, 10) == 1:
-                await ctx.respond(f'{ctx.author.mention} bonkt {member.mention}... Go to Horny Jail! 🤜🧠')
-            else:
-                await ctx.respond(f'{ctx.author.mention} bonkt {member.mention}! 🤜🧠')
-
     @discord.slash_command(name="boop", description="Boope jemanden.")
     async def boop(
         self,
@@ -983,5 +967,778 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
         elif not member:
             await ctx.respond(f'{ctx.author.mention} isst einen Keks! 🍪')
 
+    @discord.slash_command(name="dance", description="Tanze alleine oder mit jemandem.")
+    async def dance(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du tanzen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} tanzt alleine! 💃🕺')
+                return
+            await ctx.respond(f'{ctx.author.mention} tanzt mit {member.mention}! 💃🕺')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} tanzt alleine! 💃🕺')
+
+    @discord.slash_command(name="feed", description="Füttere jemanden.")
+    async def feed(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du füttern möchtest."), # type: ignore
+            essen: discord.Option(str, "Das Essen, das du füttern möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst füttern! 🍽️', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} füttert {member.mention} mit {essen}! 🍽️')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} füttert sich selbst! 🍽️')
+
+    @discord.slash_command(name="fire", description="Zünde andere an!")
+    async def fire(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du anzünden möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst anzünden! 🔥', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} zündet {member.mention} an! 🔥')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} zündet sich selbst an! 🔥')
+
+    @discord.slash_command(name="freeze", description="Friere andere ein!")
+    async def freeze(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du einfrieren möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst einfrieren! ❄️', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} friert {member.mention} ein! ❄️')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} friert sich selbst ein! ❄️')
+
+    @discord.slash_command(name="geld", description="Gib oder erhalte Geld von jemandem.")
+    async def geld(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du Geld teilen möchtest.", required=False), # type: ignore
+            betrag: discord.Option(int, "Der Betrag, den du teilen möchtest.", required=False) # type: ignore
+        ):
+        if member and betrag:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst kein Geld geben! 💰', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} {betrag}€! 💰')
+        elif member and not betrag:
+            await ctx.respond('Bitte gib einen Betrag an!', ephemeral=True)
+        elif not member and betrag:
+            await ctx.respond(f'{ctx.author.mention} erhält {betrag}€! 💰')
+        elif not member and not betrag:
+            await ctx.respond(f'{ctx.author.mention} erhält 0€! 💰')
+
+    @discord.slash_command(name="gesundheit", description="Wünsche anderen Gesundheit!")
+    async def gesundheit(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, dem du Gesundheit wünschen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst keine Gesundheit wünschen!', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} wünscht {member.mention} Gesundheit!')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} wünscht sich selbst Gesundheit!')
+
+    @discord.slash_command(name="goodvibes", description="Verbreite gute Vibes!")
+    async def goodvibes(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, dem du gute Vibes schicken möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} verbreitet gute Vibes! 🌈')
+                return
+            await ctx.respond(f'{ctx.author.mention} schickt {member.mention} gute Vibes! 🌈')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} verbreitet gute Vibes! 🌈')
+
+    @discord.slash_command(name="gruppenkuscheln", description="Kuschel mit anderen in der Gruppe.")
+    async def gruppenkuscheln(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du kuscheln möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} kuschelt alleine! 🤗')
+                return
+            await ctx.respond(f'{ctx.author.mention} kuschelt mit {member.mention}! 🤗')
+        elif not member:
+            respones = [
+                f'{ctx.author.mention} will den ganzen Chat kuscheln! 🤗',
+                f'{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗',
+                f'{ctx.author.mention} kuschelt mit allen! 🤗',
+                f'{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗',
+                f'{ctx.author.mention} will eine Kuschelparty veranstalten! 🤗',
+                f'{ctx.author.mention} kuschelt mit dem gesamten Server! 🤗',
+                f'{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗',
+                f'{ctx.author.mention} kuschelt mit allen! 🤗',
+                f'{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗',
+                f'{ctx.author.mention} zerdrückt den ganzen Chat! 🤗',
+
+            ]
+            random.shuffle(respones)
+            await ctx.respond(random.choice(respones))
+
+    @discord.slash_command(name="happy", description="Mache andere glücklich!")
+    async def happy(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du glücklich machen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} macht sich selbst happy! 😊')
+                return
+            await ctx.respond(f'{ctx.author.mention} macht {member.mention} happy! 😊')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} macht sich selbst happy! 😊')
+
+    @discord.slash_command(name="hug", description="Umarme jemanden.")
+    async def hug(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du umarmen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} umarmt sich selbst! 🤗')
+                return
+            await ctx.respond(f'{ctx.author.mention} umarmt {member.mention}! 🤗')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} umarmt sich selbst! 🤗')
+
+    @discord.slash_command(name="kill", description="Töte andere!")
+    async def kill(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du töten möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} tötet sich selbst! 💀')
+                return
+            await ctx.respond(f'{ctx.author.mention} tötet {member.mention}! 💀')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} tötet sich selbst! 💀')
+
+    @discord.slash_command(name="knife", description="Werfe mit Messer!")
+    async def knife(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du mit einem Messer treffen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dich nicht selbst mit einem Messer bewerfen! 🔪', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} wirft ein Messer auf {member.mention}! 🔪')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat ein Messer in der Hand! 🔪')
+
+    @discord.slash_command(name="love", description="Hab andere ganz coll lieb!")
+    async def love(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du lieb haben möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} hat sich selbst ganz doll lieb! ❤️')
+                return
+            await ctx.respond(f'{ctx.author.mention} hat {member.mention} ganz doll lieb! ❤️')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat sich selbst ganz doll lieb! ❤️')
+
+    @discord.slash_command(name="morning", description="Wünsche anderen einen guten Morgen!")
+    async def morning(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, dem du einen guten Morgen wünschen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dir selbst keinen guten Morgen wünschen! 🌞')
+                return
+            await ctx.respond(f'{ctx.author.mention} wünscht {member.mention} einen guten Morgen! 🌞')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} wünscht allen einen guten Morgen! 🌞')
+
+    @discord.slash_command(name="niesen", description="Niese. Das wars.")
+    async def niesen(
+        self,
+        ctx,
+        member: discord.Option(discord.Member, "User den du zum niesen bringen willst.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst zum niesen bringen! 🤧', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} bringt {member.mention} zum niesen! 🤧')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} niest! 🤧')
+
+    @discord.slash_command(name="night", description="Wünsche anderen eine gute Nacht!")
+    async def night(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, dem du eine gute Nacht wünschen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dir selbst keine gute Nacht wünschen! 🌙')
+                return
+            await ctx.respond(f'{ctx.author.mention} wünscht {member.mention} eine gute Nacht! 🌙')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} wünscht allen eine gute Nacht! 🌙')
+
+    @discord.slash_command(name="pat", description="Patte jemanden.")
+    async def pat(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du paten möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} patted sich selbst! 🐾')
+                return
+            await ctx.respond(f'{ctx.author.mention} patted {member.mention}! 🐾')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} patted sich selbst! 🐾')
+    
+    @discord.slash_command(name="prost", description="Prost!")
+    async def prost(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du anstoßen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst nicht zuprosten! 🍻', ephemeral=True)
+                return
+            if random.randint(1, 5) == 1:
+                await ctx.respond(f'{ctx.author.mention} stößt mit {member.mention} auf ein Radler an! 🍻')
+            else:
+                await ctx.respond(f'{ctx.author.mention} stößt mit {member.mention} auf ein Bier an! 🍻')
+        elif not member:
+            if random.randint(1, 5) == 1:
+                await ctx.respond(f'{ctx.author.mention} stoßt auf ein Radler an! 🍻')
+            else:
+                await ctx.respond(f'{ctx.author.mention} stoßt auf ein Bier an! 🍻')
+    
+    @discord.slash_command(name="sad", description="Sei traurig.")
+    async def sad(
+        self,
+        ctx,
+        member: discord.Option(discord.Member, "Der Benutzer, den du traurig machen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst traurig machen! 😢', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} macht {member.mention} traurig! 😢')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} ist traurig! 😢')
+
+    @discord.slash_command(name="slap", description="Klatsch anderen eine.")
+    async def slap(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du klatschen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} klatscht sich selbst eine! 👋', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} klatscht {member.mention} eine! 👋')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat das verlangen jemanden zu klatschen! 👋')
+
+    @discord.slash_command(name="spoon", description="Löffle anderen eine.")
+    async def spoon(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du löffeln möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} löffelt sich selbst eine! 🥄')
+                return
+            await ctx.respond(f'{ctx.author.mention} löffelt {member.mention} eine! 🥄')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat das Verlangen jemanden eine zu löffeln! 🥄')
+
+    @discord.slash_command(name="stare", description="Starre jemanden an.")
+    async def stare(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du anstarren möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} starrt sich selbst an! 👀')
+                return
+            await ctx.respond(f'{ctx.author.mention} starrt {member.mention} an! 👀')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} starrt in die Leere! 👀')
+
+    @discord.slash_command(name="stups", description="Stupse jemanden.")
+    async def stups(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du stupsen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} stupst sich selbst! 👉')
+                return
+            await ctx.respond(f'{ctx.author.mention} stupst {member.mention}! 👉')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat das Verlangen jemanden anzustupsen! 👉')
+
+    @discord.slash_command(name="summon", description="Beschwöre jemanden.")
+    async def summon(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du beschwören möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} beschwört sich selbst! 🧙')
+                return
+            await ctx.respond(f'{ctx.author.mention} beschwört {member.mention}! 🧙')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} beschwört sich selbst! 🧙')
+
+    @discord.slash_command(name="tea", description="Trinke oder teile Tee mit jemandem.")
+    async def tea(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du Tee trinken möchtest.", required=False) # type: ignore
+        ):
+        tea = [
+                "English Breakfast Tee",
+                "Earl Grey Tee",
+                "Green Tea",
+                "Peppermint Tea",
+                "Chamomile Tea",
+                "Jasmine Tea",
+                "Oolong Tea",
+                "White Tea",
+                "Matcha Tea",
+                "Hibiscus Tea",
+                "Rooibos Tea",
+                "Lemon Ginger Tea",
+                "Mint Verbena Tea",
+                "Peach Tranquility Tea",
+                "Passion Tango Tea",
+                "Mango Black Tea",
+                "Strawberry Green Tea",
+                "Pineapple Kona Pop Tea",
+                "Peach Citrus White Tea",
+                "Rev Up Wellness Tea",
+                "Royal English Breakfast Tea",
+                "Emperor's Clouds and Mist Tea",
+                "Mint Majesty Tea",
+                "Youthberry Tea",
+                "Wild Sweet Orange Tea",
+                "Comfort Wellness Tea",
+                "Defense Wellness Tea",
+                "Rev Up Wellness Tea",
+                "Refresh Wellness Tea",
+                "Serenity Wellness Tea",
+                "Starbucks Chai Tea",
+                "Starbucks Green Tea",
+                "Starbucks Matcha Tea",
+                "Starbucks Earl Grey Tea",
+                "Starbucks Passion Tango Tea",
+                "Starbucks Peach Tranquility Tea",
+                "Starbucks Mint Majesty Tea",
+                "Starbucks Royal English Breakfast Tea",
+                "Starbucks Emperor's Clouds and Mist Tea",
+                "Starbucks Youthberry Tea",
+                "Starbucks Wild Sweet Orange Tea",
+                "Starbucks Comfort Wellness Tea",
+                "Starbucks Defense Wellness Tea",
+                "Starbucks Rev Up Wellness Tea",
+                "Starbucks Refresh Wellness Tea",
+                "Starbucks Serenity Wellness Tea",
+        ]
+        random.shuffle(tea)
+        random_tea = random.choice(tea)
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst keinen Tee ausgeben! ☕', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} einen {random_tea} aus! ☕')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} trinkt einen {random_tea}! ☕')
+
+    @discord.slash_command(name="truthordare", description="Spiele Wahrheit oder Pflicht.")
+    async def truthordare(
+            self,
+            ctx,
+            choice: discord.Option(str, "Wähle zwischen Wahrheit oder Pflicht.", choices=["Truth", "Dare"]) # type: ignore
+        ):
+        if choice == "Truth":
+            truths = [
+                'Was ist das peinlichste was dir je passiert ist?',
+                'Wie viele Menschen hast du bisher geküsst?',
+                'Welches Tier passt am besten zu dir und warum?',
+                'Welchen Star findest du heiß?',
+                'Wen auf diesen Server würdest du daten wenn du müsstest (falls du schon mit jemand hier zusammen bist, zählt diese Person nicht!)',
+                'Hast du schonmal was geklaut?',
+                'Wer ist dein geheimer Crush?',
+                'Wann hattest du das letzte Mal Sex?',
+                'Hast du schonmal eine Straftat begangen?',
+                'Was würdest du tun wenn du für einen Monat das andere Geschlecht wärst?',
+                'Hast du schonmal Drogen genommen (außer Alkohol und Tabak)?',
+                'Wer aus der Runde sollte am dringensten zum Friseur?',
+                'Was wissen deine Eltern nicht über dich?',
+                'Was war deine Modesünde als Kind?',
+                'Was ist der peinlichste Gegenstand in deinem Kleiderschrank?',
+                'Wie oft wechselst du deine Bettwäsche?',
+                'Warst du schon einmal nackt in der Öffentlichkeit?',
+                'Hast du schonmal jemand geghostet?',
+                'Was war der größte Fehler den du je begangen hast?',
+                'Wen in der Runde würdest du küssen wenn du müsstest?'
+            ]
+            random.shuffle(truths)
+            await ctx.respond(f'{ctx.author.mention} deine Wahrheit ist: {random.choice(truths)}')
+        elif choice == "Dare":
+            dares = [
+                'Verteidige einen Furry wenn einer geflamed wird.',
+                'Poste das neueste Bild in deiner Galerie.',
+                'Joker: Gib jemanden deiner Wahl eine Aufgabe. Führe den Befehl nochmal aus um die Aufgabe für die Person zu erfahren.',
+                'Mach nichts.',
+                'Mach ein Foto von deiner Momentanen Sicht und poste es hier',
+                'Überzeuge den gesamten Chat dazu dass du das andere Geschlecht bist',
+                'Der Chat darf entscheiden was du trinken musst',
+                'Der Chat darf entscheiden was deine Aufgabe ist',
+                'Benimm dich 2 Minuten wie ein Huhn',
+                'Schreibe eine versaute Nachricht an deinen letzten Discord/WhatsApp Kontakt. Der Chat entscheidet welche Plattform',
+                'Schicke ein Screenshot von der letzten Privatnachricht die du versendet hast',
+                'Sprich mit einem bayrischen/sächsischen/anderem Dialekt',
+                'Führe eine 3-Minütige Stand-Up-Comendyshow auf'
+            ]
+            random.shuffle(dares)
+            await ctx.respond(f'{ctx.author.mention} deine Pflicht ist: {random.choice(dares)}')
+
+    @discord.slash_command(name="vc", description="Schiebe andere in den Voice Chat.")
+    async def vc(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du in den Voice Chat schieben möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dich nicht selbst in den Voice Chat schieben! 🎤', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} schiebt {member.mention} in den Voice Chat! 🎤')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} chillt im Voice Chat! 🎤')
+
+    @discord.slash_command(name="water", description="Gib oder erhalte Wasser von jemandem.")
+    async def water(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, mit dem du Wasser teilen möchtest.", required=False) # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dir selbst kein Wasser geben! 💧', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} gibt {member.mention} Wasser! 💧')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} trinkt Wasser! 💧')
+
+    @discord.slash_command(name="welcome", description="Begrüße jemanden.")
+    async def welcome(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du begrüßen möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dich nicht selbst begrüßen! 👋')
+                return
+            await ctx.respond(f'{ctx.author.mention} begrüßt {member.mention}! 👋')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} begrüßt alle! 👋')
+    
+    @discord.slash_command(name="werfen", description="Bewirf andere mit Sachen")
+    async def werfen(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du bewerfen möchtest.") # type: ignore
+        ):
+        gegenstaende = [
+            'einem Toaster',
+            'einer Küchenmaschine',
+            'einem Kühlschrank',
+            'Tom',
+            'Deno',
+            'einem Fernseher',
+            'einer Waschmaschine',
+            'einem Trockner',
+            'einer Kloschüssel',
+            'einer Tür',
+            'Tomaten',
+            'nassen Lappen',
+            'einem Schlappen',
+            'einer Glas Flasche',
+            'einem Tisch',
+            'einer PS1',
+            'einer PS2',
+            'einer PS3',
+            'einer PS4',
+            'einer PS5',
+            'einer PS6',
+            'einer PS7',
+            'einer PS8',
+            'einer PS69',
+            'einer Wii-Mote weil man "vergessen" hat das Bändchen umzubinden',
+            'einer Wii-Mote weil man das Bändchen umgebunden hat',
+            'einem Auto',
+            'einem Opel Astra',
+            'einem Keyblade',
+            'einem Gecko',
+            'einem Sandkorn',
+            'einer Genkidama',
+            'einem Lichtschwert',
+            'einem Pokeball... Gonna catch em all!',
+            'einem Controller',
+            'einer Lampe',
+            'einer Granate',
+            'Wurftsternen',
+            'Duftbombe weil du stinkst',
+            'einem Blatt',
+            'einem Wattepad',
+            '-1 lagigen Klopapier',
+            'einer Europalette',
+            'einem Gabelstapler',
+            '1ct',
+            'einem T-Shirt',
+            'einer Jacke',
+            'sich selbst. YEEET',
+            'einer Portal Gun',
+            'einem Waifu-Pillow',
+            'einem Schredder',
+            'einem Schrank',
+            'einem ODM Gear',
+            'einem Titan',
+            'einem Shonen Protagonist',
+            'Nudeln',
+            'Ravioli',
+            'einem Plastikstrohhalm',
+            'einem Glasstrohhalm',
+            'einem Plastikteller',
+            'einem Pappteller',
+            'einem Asthmaspray',
+            'einem TicTac',
+            'einer Tafel Schokolade',
+            'dem Mastersword',
+            'der Sonne',
+            'der Sonne',
+            'der Sonne',
+            'der Sonne',
+            'der Sonne',
+            'einer aufgegessenen Chips Tüte',
+            'einem Spiegel',
+            'schlechten Game Design',
+            'einer Spitzhacke',
+            'einem Plastikflugzeug',
+            'einem Papierflugzeug',
+            'einer Kreditkarte',
+            'einem Teddybär',
+            'einer RTX 3080',
+            'Nintendo Charakteren',
+            'Cappy aus Mario Odyssey',
+            'den Infinity Stones',
+            'Stormbraker',
+            'Mjolnir',
+            'Captain Americas Schild',
+            'einer Gardine',
+            'einem Hund',
+            'einer Katze',
+            'einem Hamster',
+            'einem Pferd',
+            'einer Schlange',
+            'einer giftigen Schlange',
+            'einer Oculus Rift',
+            'einem Ofen',
+            'einem heißen Ofen',
+            'einem Lehrer',
+            'einem Lehrer. GET EDUCATED!',
+            'GLaDOS',
+            'einer Zigarette',
+            'einem TARDIS',
+            'einem Subwoofer',
+            'einer Dubstep Gun',
+            'einem Schneeball',
+            'einem Dalek',
+            'einem Feuerball',
+            'einem Todesball',
+            'einer Majoras Mask',
+            'einem Triforce',
+            'einer Ocarina of Time',
+            'einem Drachi',
+            'einem Wolfiii',
+            'einem Lutz',
+            'einem Floet',
+            'einem Greencube',
+            'einem Pikmin',
+            'einem Bett',
+            'Schulden',
+            'einer Hochzeit',
+            'einem Fussballstadion',
+            'der Allianz Arena',
+            'Heroin',
+            'Obdachlosigkeit',
+            'Scheidungspapieren',
+            'einer Random Stadt',
+            'nichts',
+            'einem Auto',
+            'ÖKOLJUHBEFPGIWUBEPFGIKUWZGE=F(IPUNWHEPI$O)G=/UZGHWEPOG)IU(HW§=$)T(/"HZ§?)T(U/HGWEPIOVNUDVPOSJvopwu48tzh0ß39284gujhaß9we487zht3ß9rgvjnaße958zg==',
+            'Boomern',
+            'Lebenshilfe',
+            'Depression',
+            'einem Bügeleisen',
+            'einem traurigen Leben mit einer schlechten Karriere, einer schrecklichen Familie und Krebs im Endstadium',
+            'Tot',
+            'deiner Mum',
+            'einem Hochzeitsring',
+            'der Sonne',
+            'Rickroll',
+            'Hass',
+            'schlechten Witzen',
+            'Komplimenten',
+            'Komplimenten',
+            'Komplimenten',
+            '~~Komplimenten~~',
+            'einem Schwarzen Loch',
+            'eine UNO Reverse Karte',
+            'Kondomen',
+            'einem Kondom',
+            'einem Kondom',
+            'einem Kondom',
+            'einem gebrauchten Kondom',
+            'Discord',
+            'ICQ',
+            'Gardinen',
+            'ganz vielen Plüschtieren',
+            'einem Kissen',
+            'einem Haus',
+            'einem Bett',
+            'nichts',
+            'einer Bibel',
+            'Politikern',
+            'Mathe',
+            'Feenstaub',
+            'Diabetis',
+            'Atombomben',
+            'Dem Bundeskanzler',
+            'Zwillingen',
+            'einem Average Discord Mod',
+            'Internet',
+            'einem Laptop',
+            'einem IKEA Schrank',
+            'einem IKEA Tisch',
+            'einer Steckdose',
+            'Luft',
+            'Kohlenstoffdioxid',
+            'Diamanten',
+            'Gold',
+            'Kupfer',
+            'Helium',
+            'Wasserbomben',
+            'Russland',
+            'Deutschland',
+            'einem Todesstrahl',
+            'einem Buch. GET EDUCATED!',
+            'sich selbst',
+            'einem Schornstein',
+            'einer Geige',
+            'Tintenfischen',
+            'Salz',
+            'Pfeffer',
+            'Rattengift',
+            'einer Schneelawine',
+            'Uran',
+            'Iridium',
+            'Kalium',
+            'einer Dilara',
+            'einer Chantal',
+            'einem Mehmet',
+            'dem Mond',
+            'dem Mond (Gewicht: ca. 1/3 deiner Mum)',
+            'einem AC-130',
+            'Soup',
+            'Soupra',
+            'Bohnensuppe',
+            'Bohnensuppe (Kaffee)',
+            'Beans',
+            'einer Kettensäge',
+            'Corona',
+            'einem Affen',
+            'Trump',
+            'Putin',
+            'Angela Merkel',
+            'einer Schneeflocke',
+            'einem Fussel',
+            'AIDS',
+            'Ligma',
+            "Breath'nt",
+            'einer benutzten Atombombe',
+            'Kamehameha'
+    ]
+        gegenstaende = random.choice(gegenstaende)
+        if member:
+            if member == ctx.author:
+                await ctx.respond('Du kannst dich nicht selbst bewerfen! 🎯', ephemeral=True)
+                return
+            zufallszahl = random.randint(1, 100)
+            if zufallszahl <= 5:
+                await ctx.respond(f'TRIPLE THROW! {ctx.author.mention} wirft {member.mention} mit {random.choice(gegenstaende)}, {random.choice(gegenstaende)} und {random.choice(gegenstaende)} ab! 🎯')
+            elif zufallszahl <= 10:
+                await ctx.respond(f'DOUBLE THROW! {ctx.author.mention} wirft {member.mention} mit {random.choice(gegenstaende)} und {random.choice(gegenstaende)} ab! 🎯')
+            else:
+                await ctx.respond(f'{ctx.author.mention} wirft {member.mention} mit {gegenstaende} ab! 🎯')
+
+    @discord.slash_command(name="yeet", description="Yeet.")
+    async def yeet(
+            self,
+            ctx,
+            member: discord.Option(discord.Member, "Der Benutzer, den du yeeten möchtest.") # type: ignore
+        ):
+        if member:
+            if member == ctx.author:
+                await ctx.respond(f'{ctx.author.mention} du kannst dich nicht selbst yeeten! 🚀', ephemeral=True)
+                return
+            await ctx.respond(f'{ctx.author.mention} yeet {member.mention}! 🚀')
+        elif not member:
+            await ctx.respond(f'{ctx.author.mention} hat das Verlangen jemanden zu yeeten! 🚀')
+            
+            
+    
 def setup(bot): # this is called by Pycord to setup the cog
     bot.add_cog(Fun(bot)) # add the cog to the bot
