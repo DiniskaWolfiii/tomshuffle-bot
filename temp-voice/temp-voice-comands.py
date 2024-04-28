@@ -44,7 +44,7 @@ class TempVoiceCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name="temp-voice-interface", guild_ids=[1001916230069911703], description="Sendet die Nachricht für das Sprachkanal Interface. (Nur für Bot Owner)")
+    @commands.slash_command(name="temp-voice-interface", guild_ids=[1001916230069911703, 297425051639349249], description="Sendet die Nachricht für das Sprachkanal Interface. (Nur für Bot Owner)")
     async def rolebutton(self, ctx: discord.ApplicationContext):
         if ctx.author.id != 327880195476422656:
             return await ctx.respond("Du bist nicht der Bot Owner!", ephemeral=True)
