@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+import pickle
+import os
 
 class TempVoice(commands.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
@@ -9,8 +11,8 @@ class TempVoice(commands.Cog): # create a class for our cog that inherits from c
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        joinToCreateVoice = 941422962056265748 # the voice channel id that will be used to create the channel
-        joinToCreateParent = 941422858607931442 # the category id where the channel will be created
+        joinToCreateVoice = 1234040036299640844 # the voice channel id that will be used to create the channel
+        joinToCreateParent = 1234039999775772768 # the category id where the channel will be created
 
         if before.channel is None: # if the member was not in a voice channel before
 
@@ -23,7 +25,7 @@ class TempVoice(commands.Cog): # create a class for our cog that inherits from c
             if before.channel.id == joinToCreateVoice: # if the member left the join to create voice channel
                 return
             elif len(before.channel.members) == 0 and before.channel.category.id == joinToCreateParent: # if there are no more users in the channel
-                await before.channel.delete() # delete the channel
+                await deleteTempVoice(self.bot, before.channel.id) # delete the channel
             
         
 
@@ -37,21 +39,19 @@ class TempVoice(commands.Cog): # create a class for our cog that inherits from c
                 return
             elif before.channel.category_id == joinToCreateParent and after.channel.category_id != joinToCreateParent: # if member switched from a temp channel to a normal channel
                 if len(before.channel.members) == 0: # if there are no more users in the channel
-                    await before.channel.delete() # delete the channel
+                    await deleteTempVoice(self.bot, before.channel.id) # delete the channel
             elif after.channel.id == joinToCreateVoice: # if the member joined the join to create voice channel
                 if before.channel.category_id != joinToCreateParent: # if the member was not in a temp channel before
                     await createTempVoice(self.bot, joinToCreateParent, member) # create the temp channel
                 elif before.channel.category_id == joinToCreateParent and before.channel.id != joinToCreateVoice: # if the member was in a temp channel before and joins the join to create voice channel
                     if len(before.channel.members) == 0: # if there are no more users in the channel
-                        await before.channel.delete() # delete the channel
+                        await deleteTempVoice(self.bot, before.channel.id) # delete the channel
                 if before.channel.category_id == joinToCreateParent and after.channel.id == joinToCreateVoice:
                     await createTempVoice(self.bot, joinToCreateParent, member) # create the temp channel
             elif before.channel.category_id == joinToCreateParent and after.channel.category_id == joinToCreateParent: # if the member moved between temp channels
                 if len(before.channel.members) == 0: # if there are no more users in the channel
-                    await before.channel.delete() # delete the channel
+                    await deleteTempVoice(self.bot, before.channel.id) # delete the channel
         pass
-
-
 
 
 def setup(bot): # this is called by Pycord to setup the cog
@@ -61,6 +61,14 @@ def setup(bot): # this is called by Pycord to setup the cog
 
 async def createTempVoice(bot, joinToCreateParent, member):
     category = bot.get_channel(joinToCreateParent) # get the category
-    channel = await category.create_voice_channel(f"{member.display_name}'s Channel") # create the channel
+    channel = await category.create_voice_channel(f"{member.display_name}'s Channel", user_limit=5) # create the channel with 5 slots
+    pickle.dump((channel.id, member.id), open(f"temp-voice-ids/{channel.id}.pkl", "wb")) # save the channel id and member id to a file
     await member.move_to(channel) # move the member to the channel
+    return channel
+
+
+async def deleteTempVoice(bot, tempVoiceId):
+    channel = bot.get_channel(tempVoiceId) # get the channel
+    await channel.delete() # delete the channel
+    os.remove(f"temp-voice-ids/{channel.id}.pkl") # remove the file
     return channel
