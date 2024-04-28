@@ -6,7 +6,8 @@ import sys
 
 load_dotenv() # load all the variables from the env file
 #bot = commands.Bot(intents=discord.Intents.all())
-bot = commands.Bot(debug_guilds=[1001916230069911703], intents=discord.Intents.all())
+#bot = commands.Bot(debug_guilds=[1001916230069911703], intents=discord.Intents.all()) # for debugging - Wolfiiis Server
+bot = commands.Bot(debug_guilds=[297425051639349249], intents=discord.Intents.all()) # for debugging - Tomshuffle Server
 
 @bot.event
 async def on_ready():
