@@ -115,7 +115,7 @@ class LimitChannel(discord.ui.Modal):
 
             if self.children[0].value is not None:
                 channel = getTempChannelFromMember(interaction.user)
-                await channel.edit(user_limit=5)
+                await channel.edit(int(self.children[0].value))
             elif self.children[0].value.isnumeric():
                 channel = getTempChannelFromMember(interaction.user)
                 await channel.edit(user_limit=int(self.children[0].value))
