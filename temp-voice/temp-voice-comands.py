@@ -123,7 +123,7 @@ class LimitChannel(discord.ui.Modal):
                 return await interaction.response.send_message("Bitte gebe eine gültige Zahl ein! (1 - 99)", ephemeral=True)
             embed = discord.Embed(
                     title="Update erfolgreich!",
-                    description=f"Dein Kanal hat nun ein Limit von {channel.user_limit}!",
+                    description=f"Dein Kanal hat nun ein Limit von {interaction.user.voice.channel.user_limit}!",
                     color=discord.Color.embed_background(),
                 )
             await interaction.response.send_message(embeds=[embed], ephemeral=True)
