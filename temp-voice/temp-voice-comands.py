@@ -112,7 +112,7 @@ class LimitChannel(discord.ui.Modal):
         )
     async def callback(self, interaction: discord.Interaction):
             
-            if not self.children[0].value.isnumeric() or self.children[0].value is None:
+            if not self.children[0].value.isnumeric() and not self.children[0].value is None:
                 return await interaction.response.send_message("Bitte gebe eine gültige Zahl ein! (1 - 99)", ephemeral=True)
             channel = getTempChannelFromMember(interaction.user)
             if channel is not None:
