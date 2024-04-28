@@ -111,22 +111,24 @@ class LimitChannel(discord.ui.Modal):
             **kwargs,
         )
     async def callback(self, interaction: discord.Interaction):
-            
-            if not self.children[0].value.isnumeric() and not self.children[0].value:
-                return await interaction.response.send_message("Bitte gebe eine gültige Zahl ein! (1 - 99)", ephemeral=True)
-            channel = getTempChannelFromMember(interaction.user)
-            if channel is not None:
-                if self.children[0].value:
-                    await channel.edit(user_limit=int(self.children[0].value))
-                else:
-                    await channel.edit(user_limit=5)
+            if self.children[0].value:
+                channel = getTempChannelFromMember(interaction.user)
+                if channel is not None:
+                    if self.children[0].value:
+                        await channel.edit(user_limit=int(self.children[0].value))
+                    else:
+                        await channel.edit(user_limit=5)
     
-            embed = discord.Embed(
-                title="Update erfolgreich!",
-                description=f"Dein Kanal hat nun ein Limit von {channel.user_limit}!",
-                color=discord.Color.embed_background(),
-            )
-            await interaction.response.send_message(embeds=[embed], ephemeral=True)
+                embed = discord.Embed(
+                    title="Update erfolgreich!",
+                    description=f"Dein Kanal hat nun ein Limit von {channel.user_limit}!",
+                    color=discord.Color.embed_background(),
+                )
+                await interaction.response.send_message(embeds=[embed], ephemeral=True)
+                
+            if not self.children[0].value.isnumeric():
+                return await interaction.response.send_message("Bitte gebe eine gültige Zahl ein! (1 - 99)", ephemeral=True)
+            
 
 class ClaimChannel():
     async def callback(self, interaction: discord.Interaction):
