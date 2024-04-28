@@ -44,7 +44,8 @@ class TempVoiceCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name="temp-voice-interface", guild_ids=[1001916230069911703, 297425051639349249], description="Sendet die Nachricht für das Sprachkanal Interface. (Nur für Bot Owner)")
+    @commands.slash_command(name="temp-voice-interface", guild_ids=[297425051639349249], description="Sendet die Nachricht für das Sprachkanal Interface. (Nur für Bot Owner)") # Tomshuffle Server
+    #@commands.slash_command(name="temp-voice-interface", guild_ids=[1001916230069911703], description="Sendet die Nachricht für das Sprachkanal Interface. (Nur für Bot Owner)") # Wolfiiis Server
     async def rolebutton(self, ctx: discord.ApplicationContext):
         if ctx.author.id != 327880195476422656:
             return await ctx.respond("Du bist nicht der Bot Owner!", ephemeral=True)
@@ -113,7 +114,7 @@ class LimitChannel(discord.ui.Modal):
     async def callback(self, interaction: discord.Interaction):
             
 
-            if self.children[0].value is not None:
+            if not self.children[0].value:
                 channel = getTempChannelFromMember(interaction.user)
                 await channel.edit(user_limit=5)
             elif self.children[0].value.isnumeric():
