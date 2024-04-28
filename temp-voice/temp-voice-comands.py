@@ -6,6 +6,7 @@ import os
 tempVoiceCmdIds = {
     0 : "Rename",
     1 : "Limit",
+    2 : "Claim"
 }
 
 class TempVoiceInterface(discord.ui.Button):
@@ -18,12 +19,16 @@ class TempVoiceInterface(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         cmdId = int(self.custom_id)
-        if not memberIsChannelOwner(interaction.user):
-            return await interaction.response.send_message("Du hast keinen temporären Sprachkanal!", ephemeral=True)
         if cmdId == 0:
+            if not memberIsChannelOwner(interaction.user):
+                return await interaction.response.send_message("Du hast keinen temporären Sprachkanal!", ephemeral=True)    
             await interaction.response.send_modal(RenameChannel(title="Benenne Sprachkanal um"))
         elif cmdId == 1:
-            await interaction.response.send_modal(LimitChannel(title="Setze Nutzerlimit"))
+                if not memberIsChannelOwner(interaction.user):
+                    return await interaction.response.send_message("Du hast keinen temporären Sprachkanal!", ephemeral=True)
+                await interaction.response.send_modal(LimitChannel(title="Setze Nutzerlimit"))
+        elif cmdId == 2:
+            await ClaimChannel().callback(interaction)
 
 class TempVoiceCog(commands.Cog):
     def __init__(self, bot):
@@ -87,7 +92,6 @@ class RenameChannel(discord.ui.Modal):
         )
         await interaction.response.send_message(embeds=[embed], ephemeral=True)
         
-
 class LimitChannel(discord.ui.Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(
@@ -118,6 +122,17 @@ class LimitChannel(discord.ui.Modal):
                 color=discord.Color.embed_background(),
             )
             await interaction.response.send_message(embeds=[embed], ephemeral=True)
+
+class ClaimChannel():
+    async def callback(self, interaction: discord.Interaction):
+        
+        if interaction.user.voice is None:
+            return await interaction.response.send_message("Du musst in einem Sprachkanal sein um einen temporären Sprachkanal zu claimen!", ephemeral=True)
+        elif memberIsChannelOwner(interaction.user):
+            return await interaction.response.send_message("Du hast bereits einen temporären Sprachkanal!", ephemeral=True)
+
+
+
 
 def setup(bot):
     bot.add_cog(TempVoiceCog(bot))
