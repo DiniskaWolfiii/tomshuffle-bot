@@ -1,7 +1,6 @@
 from discord.ext import commands, tasks
 import requests
 import os
-import googleapiclient.discovery
 from dotenv import load_dotenv
 
 load_dotenv()
