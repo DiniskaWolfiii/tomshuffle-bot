@@ -1200,11 +1200,11 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
     async def night(
             self,
             ctx,
-            member: discord.Option(discord.Member, "Der Benutzer, dem du eine gute Nacht wünschen möchtest.") # type: ignore
+            member: discord.Option(discord.Member, "Der Benutzer, dem du eine gute Nacht wünschen möchtest.", required=False) # type: ignore
         ):
         if member:
             if member == ctx.author:
-                await ctx.respond(f'{ctx.author.mention} du kannst dir selbst keine gute Nacht wünschen! 🌙')
+                await ctx.respond(f'{ctx.author.mention} du kannst dir selbst keine gute Nacht wünschen! 🌙', ephemeral=True)
                 return
             await ctx.respond(f'{ctx.author.mention} wünscht {member.mention} eine gute Nacht! 🌙')
         elif not member:
@@ -1266,7 +1266,7 @@ class Fun(commands.Cog): # create a class for our cog that inherits from command
         ):
         if member:
             if member == ctx.author:
-                await ctx.respond(f'{ctx.author.mention} klatscht sich selbst eine! 👋', ephemeral=True)
+                await ctx.respond(f'{ctx.author.mention} klatscht sich selbst eine! 👋')
                 return
             await ctx.respond(f'{ctx.author.mention} klatscht {member.mention} eine! 👋')
         elif not member:
