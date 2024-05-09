@@ -678,20 +678,17 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
     async def feed(
         self,
         ctx,
-        member: discord.Option(discord.Member, "Der Benutzer, den du füttern möchtest."),  # type: ignore
-        essen: discord.Option(str, "Das Essen, das du füttern möchtest."),  # type: ignore
+        member: discord.Option(discord.Member, "Der Benutzer, den du füttern möchtest.", required=True),  # type: ignore
+        essen: discord.Option(str, "Das Essen, das du füttern möchtest.", required=True),  # type: ignore
     ):
-        if member:
-            if member == ctx.author:
-                await ctx.respond(
-                    "Du kannst dich nicht selbst füttern! 🍽️", ephemeral=True
-                )
-                return
+        if member == ctx.author:
             await ctx.respond(
-                f"{ctx.author.mention} füttert {member.mention} mit {essen}! 🍽️"
+                "Du kannst dich nicht selbst füttern! 🍽️", ephemeral=True
             )
-        elif not member:
-            await ctx.respond(f"{ctx.author.mention} füttert sich selbst! 🍽️")
+            return
+        await ctx.respond(
+            f"{ctx.author.mention} füttert {member.mention} mit {essen}! 🍽️"
+        )
 
     @discord.slash_command(name="fire", description="Zünde andere an!")
     async def fire(
@@ -790,28 +787,21 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
     async def gruppenkuscheln(
         self,
         ctx,
-        member: discord.Option(discord.Member, "Der Benutzer, mit dem du kuscheln möchtest.", required=False),  # type: ignore
     ):
-        if member:
-            if member == ctx.author:
-                await ctx.respond(f"{ctx.author.mention} kuschelt alleine! 🤗")
-                return
-            await ctx.respond(f"{ctx.author.mention} kuschelt mit {member.mention}! 🤗")
-        elif not member:
-            respones = [
-                f"{ctx.author.mention} will den ganzen Chat kuscheln! 🤗",
-                f"{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗",
-                f"{ctx.author.mention} kuschelt mit allen! 🤗",
-                f"{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗",
-                f"{ctx.author.mention} will eine Kuschelparty veranstalten! 🤗",
-                f"{ctx.author.mention} kuschelt mit dem gesamten Server! 🤗",
-                f"{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗",
-                f"{ctx.author.mention} kuschelt mit allen! 🤗",
-                f"{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗",
-                f"{ctx.author.mention} zerdrückt den ganzen Chat! 🤗",
-            ]
-            random.shuffle(respones)
-            await ctx.respond(random.choice(respones))
+        respones = [
+            f"{ctx.author.mention} will den ganzen Chat kuscheln! 🤗",
+            f"{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗",
+            f"{ctx.author.mention} kuschelt mit allen! 🤗",
+            f"{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗",
+            f"{ctx.author.mention} will eine Kuschelparty veranstalten! 🤗",
+            f"{ctx.author.mention} kuschelt mit dem gesamten Server! 🤗",
+            f"{ctx.author.mention} lädt alle zum Gruppenkuscheln ein! 🤗",
+            f"{ctx.author.mention} kuschelt mit allen! 🤗",
+            f"{ctx.author.mention} verbreitet Kuschelstimmung im Chat! 🤗",
+            f"{ctx.author.mention} zerdrückt den ganzen Chat! 🤗",
+        ]
+        random.shuffle(respones)
+        await ctx.respond(random.choice(respones))
 
     @discord.slash_command(name="happy", description="Mache andere glücklich!")
     async def happy(
