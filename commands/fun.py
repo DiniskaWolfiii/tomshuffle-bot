@@ -148,7 +148,7 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
             random.shuffle(funnyResponses)
             response = random.choice(funnyResponses)
         embed = discord.Embed(
-            title="8Ball",
+            title="🎱 8Ball",
             color=discord.Color.blue(),
             thumbnail="https://cdn.pixabay.com/photo/2015/09/05/07/17/pool-ball-923833_960_720.png",
         )
@@ -888,7 +888,7 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
     async def morning(
         self,
         ctx,
-        member: discord.Option(discord.Member, "Der Benutzer, dem du einen guten Morgen wünschen möchtest."),  # type: ignore
+        member: discord.Option(discord.Member, "Der Benutzer, dem du einen guten Morgen wünschen möchtest.", required=False),  # type: ignore
     ):
         if member:
             if member == ctx.author:
