@@ -38,8 +38,8 @@ class Setups(commands.Cog): # create a class for our cog that inherits from comm
             'Schaut um sich umher...',
             'Schnuppert an Blumen... 🌸',
             'Sorgt für Recht und Ordnung...',
-            '👀'
+            '👀',
         ]
-        await self.bot.change_presence(activity=discord.Game(name=random.choice(stati)))
+        await self.bot.change_presence(activity=discord.CustomActivity(name=random.choice(stati)))
 def setup(bot): # this is called by Pycord to setup the cog
     bot.add_cog(Setups(bot)) # add the cog to the bot
