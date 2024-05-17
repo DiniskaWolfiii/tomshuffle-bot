@@ -1177,6 +1177,7 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
                 "Hast du schonmal jemand geghostet?",
                 "Was war der größte Fehler den du je begangen hast?",
                 "Wen in der Runde würdest du küssen wenn du müsstest?",
+                "Was war das schlimmste Date das du je hattest?"
             ]
             random.shuffle(truths)
             await ctx.respond(
