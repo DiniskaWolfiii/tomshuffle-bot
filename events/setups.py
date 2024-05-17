@@ -11,6 +11,10 @@ class Setups(commands.Cog): # create a class for our cog that inherits from comm
     def cog_unload(self):
         self.change_status.cancel()
     
+    @commands.Cog.listener() # we can add event listeners to our cog
+    async def on_ready(self): # this is called when the bot is ready
+        await self.change_status(self)
+
     @tasks.loop(minutes=5)
     async def change_status(self):
 
