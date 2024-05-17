@@ -1198,6 +1198,7 @@ class Fun(commands.Cog):  # create a class for our cog that inherits from comman
                 "Schicke ein Screenshot von der letzten Privatnachricht die du versendet hast",
                 "Sprich mit einem bayrischen/sächsischen/anderem Dialekt",
                 "Führe eine 3-Minütige Stand-Up-Comendyshow auf",
+                "Mach 10 Liegestütze"
             ]
             random.shuffle(dares)
             await ctx.respond(
