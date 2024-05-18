@@ -17,7 +17,7 @@ def ping():
 
 def run():
     print("Starting Flask server")
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=os.getenv("STATUS_UPDATE_PORT"))
 
 class Setups(commands.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
@@ -25,20 +25,14 @@ class Setups(commands.Cog): # create a class for our cog that inherits from comm
     def __init__(self, bot): # this is a special method that is called when the cog is loaded
         self.bot = bot
         self.change_status.start()
-        self.update_status.start()
 
     def cog_unload(self):
         self.change_status.cancel()
-        self.update_status.cancel()
     
     @commands.Cog.listener() # we can add event listeners to our cog
     async def on_ready(self): # this is called when the bot is ready
         await self.change_status()
         threading.Thread(target=run).start()
-
-    @tasks.loop(seconds=299.0)
-    async def update_status(self):
-        requests.get(os.getenv("STATUS_PAGE_URL"))
 
     @tasks.loop(minutes=5)
     async def change_status(self):
