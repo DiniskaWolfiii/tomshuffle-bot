@@ -13,6 +13,7 @@ def ping():
     return "OK", 200
 
 def run():
+    print("Starting Flask server")
     app.run(host='0.0.0.0', port=5000)
 
 class StatusPageUpdate(commands.Cog):
