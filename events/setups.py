@@ -7,6 +7,7 @@ class Setups(commands.Cog): # create a class for our cog that inherits from comm
 
     def __init__(self, bot): # this is a special method that is called when the cog is loaded
         self.bot = bot
+        self.change_status.start()
 
     def cog_unload(self):
         self.change_status.cancel()
@@ -15,7 +16,7 @@ class Setups(commands.Cog): # create a class for our cog that inherits from comm
     async def on_ready(self): # this is called when the bot is ready
         await self.change_status()
 
-    @tasks.loop(minutes=5)
+    @tasks.loop(seconds=5)
     async def change_status(self):
 
         stati = [
