@@ -1,4 +1,4 @@
-from flask import Flask, request
+"""from flask import Flask, request
 from discord.ext import commands, tasks
 import requests
 import os
@@ -20,6 +20,7 @@ class StatusPageUpdate(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.update_status.start()
+        
 
     def cog_unload(self):
         self.update_status.cancel()
@@ -29,4 +30,4 @@ class StatusPageUpdate(commands.Cog):
         requests.get(os.getenv("STATUS_PAGE_URL"))
 
 def setup(bot):
-    bot.add_cog(StatusPageUpdate(bot))
+    bot.add_cog(StatusPageUpdate(bot))"""
