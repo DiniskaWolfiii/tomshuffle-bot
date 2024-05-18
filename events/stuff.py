@@ -1,9 +1,19 @@
+from flask import Flask, request
 from discord.ext import commands, tasks
 import requests
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+app = Flask(__name__)
+
+@app.route('/tomshuffle-bot-ping', methods=['POST'])
+def ping():
+    return "OK", 200
+
+def run():
+    app.run(host='0.0.0.0', port=5000)
 
 class StatusPageUpdate(commands.Cog):
     def __init__(self, bot):
