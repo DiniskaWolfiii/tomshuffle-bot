@@ -53,3 +53,5 @@ if __name__ == '__main__':
                 print(f"{i} wurde geladen")
 
 bot.run(os.getenv('TOKEN')) # run the bot with the token
+
+# Test
