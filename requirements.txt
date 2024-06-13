@@ -12,11 +12,9 @@ Flask==3.0.3
 frozenlist==1.4.1
 gitdb==4.0.11
 GitPython==3.1.43
-google-api-core==2.19.0
 google-api-python-client==2.132.0
 google-auth==2.30.0
 google-auth-httplib2==0.2.0
-googleapis-common-protos==1.63.1
 httplib2==0.22.0
 idna==3.7
 itsdangerous==2.2.0
@@ -24,7 +22,6 @@ Jinja2==3.1.4
 MarkupSafe==2.1.5
 multidict==6.0.5
 proto-plus==1.23.0
-protobuf==5.27.1
 py-cord==2.5.0
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
