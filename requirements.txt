@@ -13,7 +13,7 @@ frozenlist==1.4.1
 gitdb==4.0.11
 GitPython==3.1.43
 google-api-python-client==2.135.0
-google-auth==2.30.0
+google-auth==2.31.0
 google-auth-httplib2==0.2.0
 httplib2==0.22.0
 idna==3.7
