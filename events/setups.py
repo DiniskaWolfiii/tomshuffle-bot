@@ -4,7 +4,6 @@ import random
 from flask import Flask, request
 import threading
 from dotenv import load_dotenv
-import requests
 import os
 
 load_dotenv()
