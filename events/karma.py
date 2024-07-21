@@ -153,12 +153,15 @@ class Karma(commands.Cog):
         await ctx.defer()
         guild_id = ctx.guild.id
         try:
+            embed = discord.Embed(title="Karma Leaderboard", color=discord.Color.blurple())
             async with aiosqlite.connect(self.db_path) as db:
                 async with db.execute("SELECT * FROM guild_{0} ORDER BY karma DESC LIMIT 10".format(guild_id),) as cursor:
                     rows = await cursor.fetchall()
-                    leaderboard = "\n".join([f"{ctx.guild.get_member(row[0])}: {row[1]}" for row in rows])
+                    for row in rows:
+                        user = ctx.guild.get_member(row[0])
+                        embed.add_field(name=user.display_name, value=row[1], inline=False)
                 await db.commit()
-            await ctx.respond(f"Karma leaderboard:\n{leaderboard}")
+            await ctx.respond(embed=embed)
         except Exception as e:
             ctx.respond(f"An error occurred: {e}")
 
