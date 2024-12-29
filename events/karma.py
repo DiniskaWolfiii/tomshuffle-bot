@@ -5,8 +5,8 @@ import aiosqlite
 class Karma(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.db_path = "./../data/karma.db"
-        self.rewards_db_path = "./../data/rewards.db"
+        self.db_path = "/db/karma.db"
+        self.rewards_db_path = "/db/rewards.db"
         self.give_voice_karma.start()
     
     def cog_unload(self):
