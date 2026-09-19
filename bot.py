@@ -7,7 +7,14 @@ import sys
 load_dotenv() # load all the variables from the env file
 bot = commands.Bot(intents=discord.Intents.all())
 #bot = commands.Bot(debug_guilds=[1001916230069911703], intents=discord.Intents.all()) # for debugging - Wolfiiis Server
-# Test
+#################################################
+environment = os.getenv("ENVIRONMENT")
+if environment == "PROD":
+    TOKEN = os.getenv("PROD_TOKEN")
+else:
+    TOKEN = os.getenv("DEV_TOKEN")
+#################################################
+
 
 @bot.event
 async def on_ready():
@@ -53,6 +60,4 @@ if __name__ == '__main__':
             else:
                 print(f"{i} wurde geladen")
 
-bot.run(os.getenv('TOKEN')) # run the bot with the token
-
-# Test
+bot.run(TOKEN)
