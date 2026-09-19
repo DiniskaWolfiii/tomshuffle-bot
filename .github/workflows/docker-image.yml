@@ -41,4 +41,8 @@ jobs:
           docker load -i /home/tomshuffle-bot/image.tar
           docker stop ${{ secrets.DOCKER_IMAGE_NAME }} || true
           docker rm ${{ secrets.DOCKER_IMAGE_NAME }} || true
-          docker run -d --name ${{ secrets.DOCKER_IMAGE_NAME }} -e TOKEN=${{secrets.DISCORD_BOT_TOKEN}} -v /home/tomshuffle-bot/db:/db ${{ secrets.DOCKER_IMAGE_NAME }}
+          docker run -d \
+            --env-file /home/tomshuffle-bot/tomshuffle-bot.env \
+            --restart unless-stopped \
+            --name ${{ secrets.DOCKER_IMAGE_NAME }} \
+            -v /home/tomshuffle-bot/db:/db ${{ secrets.DOCKER_IMAGE_NAME }}
