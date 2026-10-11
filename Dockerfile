@@ -3,13 +3,21 @@ LABEL title="tomshuffle-bot"
 LABEL authors="Wolfiii"
 LABEL version="1.0.0"
 
-COPY . /bot
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-WORKDIR /bot
+WORKDIR /app
 
-RUN pip install -r requirements.txt
-ENV DOCKER=true
-
+# Verzeichnis für SQLite-Datenbanken anlegen und als Volume definieren
+RUN mkdir -p /db
 VOLUME ["/db"]
 
-ENTRYPOINT ["python", "bot.py"]
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Flask Ping/Status-Port (Standard 5000)
+EXPOSE 5000
+
+CMD ["python", "bot.py"]

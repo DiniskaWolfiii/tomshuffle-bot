@@ -1,6 +1,14 @@
+.git
 .github
 .venv
-data
-.env
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env*
+data/
+db/
+.vscode/
 Dockerfile
+docker-compose*.yml
 README.md

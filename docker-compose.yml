@@ -1,0 +1,34 @@
+services:
+  tomshuffle-bot:
+    container_name: tomshuffle-bot
+    # Vorgefertigtes Image für den Standalone-Betrieb (One-File-Lösung)
+    image: ghcr.io/diniskawolfiii/tomshuffle-bot:latest
+
+    # Optional: Wenn du den Bot lokal aus dem Quellcode bauen möchtest,
+    # entferne das '#' vor den nächsten beiden Zeilen:
+    # build:
+    #   context: .
+
+    restart: unless-stopped
+
+    environment:
+      # Umgebung: PROD oder DEV
+      - ENVIRONMENT=${ENVIRONMENT:-PROD}
+
+      # Discord Bot Token (wird aus .env gelesen oder kann hier direkt eingetragen werden)
+      - PROD_TOKEN=${PROD_TOKEN:-}
+      - DEV_TOKEN=${DEV_TOKEN:-}
+
+      # Port für den integrierten Flask Ping/Status Server
+      - STATUS_UPDATE_PORT=${STATUS_UPDATE_PORT:-5000}
+
+    volumes:
+      # SQLite-Datenbanken (karma.db, rewards.db) persistent auf dem Host speichern
+      - ./db:/db
+
+      # Persistente Speicherung aktiver temporärer Sprachkanal-IDs
+      - ./temp-voice-ids:/app/temp-voice/temp-voice-ids
+
+    # Optional: Port nach außen freigeben (z. B. für Uptime-Monitoring oder Healthchecks)
+    ports:
+      - "${STATUS_UPDATE_PORT:-5000}:5000"

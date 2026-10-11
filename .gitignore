@@ -1,6 +1,12 @@
 .env
-.venv
+*.env
+.venv/
 __pycache__/
+*.py[cod]
 git_update.sh
 .vscode/
 data/
+db/
+*.db
+temp-voice/temp-voice-ids/*.pkl
+temp-voice-ids/*.pkl
